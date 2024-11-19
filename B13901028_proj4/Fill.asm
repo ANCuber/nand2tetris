@@ -31,6 +31,12 @@
     @i
     M=0
 (BLOOP)
+    //Check IfNotPressed
+    @KBD
+    D=M
+    @Whiten
+    D;JEQ
+
     @i
     D=M
     @N
@@ -71,6 +77,12 @@
     @i
     M=0
 (WLOOP)
+    //Check IfPressed
+    @KBD
+    D=M
+    @Blacken
+    D;JNE
+
     @i
     D=M
     @N
@@ -92,4 +104,5 @@
 (WEND)
     @WHILE
     0;JMP
+
 
