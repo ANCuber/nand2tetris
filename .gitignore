@@ -8,6 +8,7 @@
 *.zip
 test.*
 test
+test/
 .DS_Store
 tools/
 projects/
