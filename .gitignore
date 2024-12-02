@@ -6,6 +6,8 @@
 !*/
 
 *.zip
+test.*
+test
 .DS_Store
 tools/
 projects/
