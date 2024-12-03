@@ -1,0 +1,27 @@
+class Kid {
+    field int x, y, h; // position
+
+    constructor Kid new(int xVal, int yVal, int hVal) {
+        let x = xVal;
+        let y = yVal;
+        let h = hVal;
+        do drawKid();
+        return this;
+    }
+
+    method void drawKid() {
+        do Screen.drawCircle(x, y, h);
+        return;
+    }
+
+    method void moveRight() {
+        let x = x+2;
+        return;
+    }
+    
+    method void moveLeft() {
+        let x = x-2;
+        return;
+    }
+
+}

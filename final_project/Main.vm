@@ -1,0 +1,21 @@
+function Main.main 2
+    call Screen.clearScreen 0
+    pop temp 0
+    push constant 100
+    push constant 100
+    push constant 8
+    call Kid.new 3
+    pop local 0
+    push constant 200
+    push constant 200
+    call Ground.new 2
+    pop local 1
+    push constant 100
+    call Sys.wait 1
+    pop temp 0
+    push local 1
+    push constant 20
+    call Ground.moveUp 2
+    pop temp 0
+    push constant 0
+    return
