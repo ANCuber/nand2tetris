@@ -22,6 +22,10 @@ label Main_0
     pop temp 0
     goto Main_0
 label Main_1
+    call Cover.showFail 0
+    pop temp 0
+    push constant 0
+    return
     push constant 10000
     call Sys.wait 1
     pop temp 0
@@ -170,6 +174,12 @@ label Main_4
     pop local 0
     goto Main_2
 label Main_3
+    push constant 0
+    return
+function Main.fail 0
+    push constant 1
+    neg
+    pop static 9
     push constant 0
     return
 function Main.groundMoving 2

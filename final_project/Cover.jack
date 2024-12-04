@@ -10,4 +10,12 @@ class Cover{
         do Screen.clearScreen();
         return key;
     }
+    
+    function void showFail() {
+        do Screen.clearScreen();
+        do Output.moveCursor(11, 15);
+        do Output.printString("You FAILED... ><");
+        
+        return;
+    }
 }

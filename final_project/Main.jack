@@ -15,6 +15,9 @@ class Main {
             do Sys.wait(500);
         }
 
+        do Cover.showFail();
+        return;
+
         do Sys.wait(10000);
         do Screen.clearScreen();
         do Output.moveCursor(11, 15);
@@ -63,6 +66,11 @@ class Main {
             let i = i+1;
         }
         
+        return;
+    }
+
+    function void fail() {
+        let breakMainWhile = true;
         return;
     }
 

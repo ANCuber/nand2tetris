@@ -86,7 +86,7 @@ label Kid_2
     lt
     push this 1
     and
-    push constant 5
+    push constant 7
     gt
     not
     if-goto Kid_7
@@ -106,7 +106,7 @@ label Kid_6
     lt
     push this 1
     and
-    push constant 5
+    push constant 7
     gt
     not
     if-goto Kid_9
@@ -119,9 +119,7 @@ label Kid_9
 label Kid_8
     goto Kid_4
 label Kid_5
-    push this 3
     push static 0
-    add
     pop this 3
     push this 1
     push constant 250
@@ -152,6 +150,20 @@ label Kid_10
 label Kid_13
 label Kid_12
 label Kid_4
+    push this 1
+    push constant 250
+    gt
+    push this 1
+    or
+    push constant 7
+    lt
+    not
+    if-goto Kid_15
+    call Main.fail 0
+    pop temp 0
+    goto Kid_14
+label Kid_15
+label Kid_14
     push constant 0
     return
 function Kid.moveRight 0
