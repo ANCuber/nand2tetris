@@ -1,19 +1,46 @@
 class Main {
+    static Array objs, randNum;
+    static Kid kd;
+    static int rand;
+    
     function void main() {
         // Variables and Objects
-        var Kid kd;
-        var Ground gnd;
+        var int layerDiff;
+        var int i;
+        var int cnt;
 
-        // Clear the screen
+        let objs = Array.new(100);
+        let randNum = Array.new(100);
+        let layerDiff = 40;
+
         do Screen.clearScreen(); // note that the screen is 256*512
+        do generateRandNum(100);
         
-        let kd = Kid.new(100, 100, 8);
-        let gnd = Ground.new(200, 200);
-
-        do Sys.wait(100);
-
-        do gnd.moveUp(20);
+        let i = 0;
+        let cnt = 30;
+        while (cnt < 256) {
+            let rand = Random.randRange(1);
+            if (rand = 0) {
+                let objs[i] = Trap.new(randNum[i]+10, cnt);
+            } else {
+                let objs[i] = Ground.new(randNum[i]+10, cnt);
+            }
+            
+            let cnt = cnt+layerDiff;
+            let i = i+1;
+        }
         
+        return;
+    }
+    
+    method void generateRandNum(int size) {
+        var int i;
+        let i = 0;
+        do Random.setSeed(357);
+        while (i < size) {
+            let randNum[i] = Random.randRange(430);
+            let i = i+1;
+        }
         return;
     }
 }

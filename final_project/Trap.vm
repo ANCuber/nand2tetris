@@ -1,43 +1,47 @@
-function Ground.new 0
+function Trap.new 0
     push constant 5
     call Memory.alloc 1
     pop pointer 0
     push argument 0
     pop this 0
     push argument 1
+    push constant 7
+    add
     pop this 1
-    push constant 75
+    push constant 60
     pop this 2
-    push constant 2
+    push constant 3
     pop this 3
     push constant 7
     pop this 4
     push pointer 0
-    call Ground.drawGround 1
+    call Trap.drawTrap 1
     pop temp 0
     push pointer 0
     return
-function Ground.drawGround 0
+function Trap.drawTrap 0
     push argument 0
     pop pointer 0
     push pointer 0
     push constant 1
-    call Ground.onScreen 2
+    call Trap.onScreen 2
     pop temp 0
     push constant 0
     return
-function Ground.clearGround 0
+function Trap.clearTrap 0
     push argument 0
     pop pointer 0
     push pointer 0
     push constant 0
-    call Ground.onScreen 2
+    call Trap.onScreen 2
     pop temp 0
     push constant 0
     return
-function Ground.onScreen 0
+function Trap.onScreen 1
     push argument 0
     pop pointer 0
+    push constant 0
+    pop local 0
     push argument 1
     call Screen.setColor 1
     pop temp 0
@@ -49,6 +53,8 @@ function Ground.onScreen 0
     push this 1
     push this 3
     add
+    push constant 1
+    sub
     call Screen.drawRectangle 4
     pop temp 0
     push this 0
@@ -57,6 +63,8 @@ function Ground.onScreen 0
     push this 1
     push this 3
     add
+    push constant 1
+    sub
     push this 0
     push this 2
     add
@@ -64,73 +72,81 @@ function Ground.onScreen 0
     sub
     push this 1
     push this 3
-    push constant 2
-    call Math.multiply 2
     add
     call Screen.drawRectangle 4
     pop temp 0
-    push this 0
-    push this 4
-    push constant 2
-    call Math.multiply 2
-    add
-    push this 1
-    push this 3
-    push constant 2
-    call Math.multiply 2
-    add
-    push this 0
+label Trap_0
+    push local 0
     push this 2
+    lt
+    not
+    if-goto Trap_1
+    push this 0
+    push local 0
     add
-    push this 4
-    push constant 2
-    call Math.multiply 2
-    sub
+    push constant 1
+    add
     push this 1
-    push this 3
+    push constant 1
+    sub
+    push this 0
+    push local 0
+    add
+    push constant 5
+    add
+    push this 1
+    push constant 1
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push local 0
+    add
+    push constant 2
+    add
+    push this 1
+    push constant 2
+    sub
+    push this 0
+    push local 0
+    add
+    push constant 4
+    add
+    push this 1
+    push constant 2
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push local 0
+    add
     push constant 3
-    call Math.multiply 2
-    add
-    call Screen.drawRectangle 4
-    pop temp 0
-    push this 0
-    push this 4
-    push constant 4
-    call Math.multiply 2
     add
     push this 1
-    push this 3
     push constant 3
-    call Math.multiply 2
-    add
-    push this 0
-    push this 2
-    add
-    push this 4
-    push constant 4
-    call Math.multiply 2
     sub
-    push this 1
-    push this 3
-    push constant 4
-    call Math.multiply 2
-    add
-    call Screen.drawRectangle 4
+    call Screen.drawPixel 2
     pop temp 0
+    push local 0
+    push constant 6
+    add
+    pop local 0
+    goto Trap_0
+label Trap_1
     push constant 0
     return
-function Ground.moveUp 0
+function Trap.moveUp 0
     push argument 0
     pop pointer 0
     push pointer 0
-    call Ground.clearGround 1
+    call Trap.clearTrap 1
     pop temp 0
     push this 1
     push argument 1
     sub
     pop this 1
     push pointer 0
-    call Ground.drawGround 1
+    call Trap.drawTrap 1
     pop temp 0
     push constant 0
     return

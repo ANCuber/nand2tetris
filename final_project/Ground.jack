@@ -1,27 +1,29 @@
 class Ground {
-    field int x, y, len, thick, diff; // position
+    field int x, y; // position, top-left
+    field int len, thick, diff;
 
     constructor Ground new(int xVal, int yVal) {
         let x = xVal;
         let y = yVal;
         let len = 75;
-        let thick = 3;
+        let thick = 2;
         let diff = 7;
         do drawGround();
         return this;
     }
     
     method void drawGround() {
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x, y, x+len, y+thick);
-        do Screen.drawRectangle(x+diff, y+thick, x+len-diff, y+Math.multiply(thick, 2));
-        do Screen.drawRectangle(x+Math.multiply(diff, 2), y+Math.multiply(thick, 2), x+len-Math.multiply(diff, 2), y+Math.multiply(thick, 3));
-        do Screen.drawRectangle(x+Math.multiply(diff, 4), y+Math.multiply(thick, 3), x+len-Math.multiply(diff, 4), y+Math.multiply(thick, 4));
+        do onScreen(1);
         return;
     }
 
     method void clearGround() {
-        do Screen.setColor(0);
+        do onScreen(0);
+        return;
+    }
+
+    method void onScreen(int ctrl) {
+        do Screen.setColor(ctrl);
         do Screen.drawRectangle(x, y, x+len, y+thick);
         do Screen.drawRectangle(x+diff, y+thick, x+len-diff, y+Math.multiply(thick, 2));
         do Screen.drawRectangle(x+Math.multiply(diff, 2), y+Math.multiply(thick, 2), x+len-Math.multiply(diff, 2), y+Math.multiply(thick, 3));
