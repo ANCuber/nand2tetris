@@ -1,15 +1,25 @@
 class Kid {
     field int x, y, h; // position
+    static int g;
 
     constructor Kid new(int xVal, int yVal, int hVal) {
         let x = xVal;
         let y = yVal;
         let h = hVal;
+        let g = 1;
         do drawKid();
         return this;
     }
 
+    method int getX() {
+        return x;
+    }
+    method int getY() {
+        return y;
+    }
+
     method void drawKid() {
+        do Screen.setColor(1);
         do Screen.drawCircle(x, y, h);
         return;
     }

@@ -1,28 +1,56 @@
 class Ground {
     field int x, y; // position, top-left
     field int len, thick, diff;
+    field int type; // 0 for a real ground, 1 for a trap
 
-    constructor Ground new(int xVal, int yVal) {
+    constructor Ground new(int xVal, int yVal, int tVal) {
+        let type = tVal;
         let x = xVal;
-        let y = yVal;
-        let len = 75;
-        let thick = 2;
+        if (type = 0) {
+            let y = yVal;
+        } else {
+            let y = yVal+7;
+        }
+        if (type = 0) {
+            let len = 75;
+        } else {
+            let len = 60;
+        }
+        if (type = 0) {
+            let thick = 2;
+        } else {
+            let thick = 3;
+        }
         let diff = 7;
-        do drawGround();
         return this;
     }
     
-    method void drawGround() {
-        do onScreen(1);
+    method int getX() {
+        return x;
+    }
+    method int getY() {
+        return y;
+    }
+    
+    method void drawObject() {
+        if (type = 0) {
+            do groundOnScreen(1);
+        } else {
+            do trapOnScreen(1);
+        }
         return;
     }
 
-    method void clearGround() {
-        do onScreen(0);
+    method void clearObject() {
+        if (type = 0) {
+            do groundOnScreen(0);
+        } else {
+            do trapOnScreen(0);
+        }
         return;
     }
-
-    method void onScreen(int ctrl) {
+    
+    method void groundOnScreen(int ctrl) {
         do Screen.setColor(ctrl);
         do Screen.drawRectangle(x, y, x+len, y+thick);
         do Screen.drawRectangle(x+diff, y+thick, x+len-diff, y+Math.multiply(thick, 2));
@@ -31,10 +59,32 @@ class Ground {
         return;
     }
     
+    method void trapOnScreen(int ctrl) {
+        var int cnt;
+        let cnt = 0;
+        
+        do Screen.setColor(ctrl);
+        do Screen.drawRectangle(x, y, x+len, y+thick-1);
+        do Screen.drawRectangle(x+diff, y+thick-1, x+len-diff, y+thick);
+        
+        while (cnt < len) {
+            do Screen.drawLine(x+cnt+1, y-1, x+cnt+5, y-1);
+            do Screen.drawLine(x+cnt+2, y-2, x+cnt+4, y-2);
+            do Screen.drawPixel(x+cnt+3,y-3);
+            let cnt = cnt+6;
+        }
+        
+        return;
+    }
+    
     method void moveUp(int dh) {
-        do clearGround();
+        if (y < 248 & y > 3) {
+            do clearObject();
+        }
         let y = y-dh;
-        do drawGround();
+        if (y < 248 & y > 3) {
+            do drawObject();
+        }
         return;
     }
 }

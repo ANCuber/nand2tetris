@@ -1,29 +1,62 @@
 class Main {
     static Array objs, randNum;
     static Kid kd;
-    static int rand;
+    static int kd_x, kd_y;
+    static int rand, speed, layerDiff, layerEnd;
+    static boolean breakMainWhile;
     
+
     function void main() {
+        do initializing();
+        do Cover.showCover();
+        
+        while(~breakMainWhile) {
+            do groundMoving();
+            //do sys.wait(80);
+        }
+
+        do Sys.wait(10000);
+        do Screen.clearScreen();
+        do Output.moveCursor(11, 15);
+        do Output.printString("Congrats!");
+        
+        return;
+    }
+    
+    method void initializing() {
         // Variables and Objects
-        var int layerDiff;
-        var int i;
-        var int cnt;
+        var Ground tmp;
 
         let objs = Array.new(100);
         let randNum = Array.new(100);
-        let layerDiff = 40;
+        let layerDiff = 80;
+        let layerEnd = 256;
+        let speed = 1;
+        let breakMainWhile = false;
 
-        do Screen.clearScreen(); // note that the screen is 256*512
         do generateRandNum(100);
+        do initBackground();
+        
+        let tmp = objs[1];
+        let kd_x = tmp.getX()+30;
+        let kd_y = tmp.getY()-5;
+        let kd = Kid.new(kd_x, kd_y, 5);
+
+        return;
+    }
+
+    method void initBackground() {
+        var int i;
+        var int cnt;
         
         let i = 0;
-        let cnt = 30;
-        while (cnt < 256) {
-            let rand = Random.randRange(1);
+        let cnt = 120;
+        while (i < 100) {
+            let rand = Random.randRange(2);
             if (rand = 0) {
-                let objs[i] = Trap.new(randNum[i]+10, cnt);
+                let objs[i] = Ground.new(randNum[i]+80, cnt, 1);
             } else {
-                let objs[i] = Ground.new(randNum[i]+10, cnt);
+                let objs[i] = Ground.new(randNum[i]+80, cnt, 0);
             }
             
             let cnt = cnt+layerDiff;
@@ -32,15 +65,45 @@ class Main {
         
         return;
     }
+
+    method void groundMoving() {
+        var int i;
+        var Ground tmp;
+
+        let i = 0;
+        while(i < 100) {
+            let tmp = objs[i];
+            do tmp.moveUp(speed);
+            
+            let i = i+1;
+        }
+        
+        if (tmp.getY() < 150 & layerEnd > 240) {
+            do drawEnd();
+        }
+        if (tmp.getY() < (3+1)) {
+            let breakMainWhile = true;
+        }
+
+        return;
+    }
     
     method void generateRandNum(int size) {
         var int i;
         let i = 0;
-        do Random.setSeed(357);
+        do Random.setSeed(6571);
         while (i < size) {
-            let randNum[i] = Random.randRange(430);
+            let randNum[i] = Random.randRange(280);
             let i = i+1;
         }
+
+        return;
+    }
+
+    method void drawEnd() {
+        let layerEnd = layerEnd-1;
+        do Screen.setColor(1);
+        do Screen.drawLine(0, layerEnd, 511, layerEnd);
         return;
     }
 }
