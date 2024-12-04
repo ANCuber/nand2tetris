@@ -1,13 +1,17 @@
 class Kid {
     field int x, y, h; // position
+    field int vel;
     static int g;
+    static boolean onGround;
 
     constructor Kid new(int xVal, int yVal, int hVal) {
         let x = xVal;
         let y = yVal;
         let h = hVal;
+        let vel = 0;
         let g = 1;
-        do drawKid();
+        let onGround = true;
+        do drawKid(1);
         return this;
     }
 
@@ -18,20 +22,58 @@ class Kid {
         return y;
     }
 
-    method void drawKid() {
-        do Screen.setColor(1);
+    method void drawKid(int ctrl) {
+        do Screen.setColor(ctrl);
         do Screen.drawCircle(x, y, h);
         return;
     }
 
-    method void moveRight() {
-        let x = x+2;
-        return;
-    }
-    
-    method void moveLeft() {
-        let x = x-2;
+    method void updatePos(int dH) {
+        var char key;
+        var int i;
+        
+        if (Keyboard.keyPressed() = 130) {
+            do moveLeft(2);
+        }
+        if (Keyboard.keyPressed() = 132) {
+            do moveRight(2);
+        }
+
+        let onGround = Main.checkOnGround(x, y, h);
+        
+        if (onGround) {
+            let vel = 0;
+            if (y < 250 & y > 5) {
+                do drawKid(0);
+            }
+            let y = y-dH;
+            if (y < 250 & y > 5) {
+                do drawKid(1);
+            }
+        } else {
+            let vel = vel+g;
+            if (y < 250) {
+                do drawKid(0);
+            }
+            let y = y+vel;
+            if (y < 250) {
+                do drawKid(1);
+            }
+        }
         return;
     }
 
+    method void moveRight(int dx) {
+        do drawKid(0);
+        let x = x+dx;
+        do drawKid(1);
+        return;
+    }
+    
+    method void moveLeft(int dx) {
+        do drawKid(0);
+        let x = x-dx;
+        do drawKid(1);
+        return;
+    }
 }

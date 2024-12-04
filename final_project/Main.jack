@@ -4,15 +4,15 @@ class Main {
     static int kd_x, kd_y;
     static int rand, speed, layerDiff, layerEnd;
     static boolean breakMainWhile;
-    
 
     function void main() {
         do initializing();
-        do Cover.showCover();
+        do Random.setSeed(Cover.showCover());
         
         while(~breakMainWhile) {
+            do kd.updatePos(speed);
             do groundMoving();
-            //do sys.wait(80);
+            do Sys.wait(500);
         }
 
         do Sys.wait(10000);
@@ -88,10 +88,28 @@ class Main {
         return;
     }
     
+    function boolean checkOnGround(int curx, int cury, int size) {
+        //TODO: ground or trap?
+        var Ground tmp;
+        var int i;
+
+        let i = 0;
+        while(i < 100) {
+            let tmp = objs[i];
+            if ((cury+size = tmp.getY()) & (curx > (tmp.getX()-1)) & (curx < (tmp.getX()+tmp.getLen()))) {
+                return true;
+            } 
+            
+            let i = i+1;
+        }
+
+        return false;
+    }
+    
     method void generateRandNum(int size) {
         var int i;
         let i = 0;
-        do Random.setSeed(6571);
+        //do Random.setSeed(6571);
         while (i < size) {
             let randNum[i] = Random.randRange(280);
             let i = i+1;

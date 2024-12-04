@@ -1,24 +1,13 @@
 class Cover{
-    function void showCover() {
+    function char showCover() {
         var char key;
         
         do Screen.clearScreen();
         do Output.moveCursor(11, 15);
-        do Output.printString("Press 'Enter' to start the game.");
-        //do Output.println();
+        do Output.printString("Press ANY KEY to start the game.");
 
-        // Start a while loop
-        while (true) {
-            // Read a character from the keyboard
-            let key = Keyboard.readChar();
-
-            // Check if the Enter key (ASCII 128) is pressed
-            if (key = 128) {
-                do Screen.clearScreen();
-                return;  // Exit the function, breaking the loop
-            }
-        }
-
-        return;
+        let key = Keyboard.readChar();
+        do Screen.clearScreen();
+        return key;
     }
 }

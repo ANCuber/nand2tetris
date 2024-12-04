@@ -3,14 +3,22 @@ function Main.main 0
     call Main.initializing 1
     pop temp 0
     call Cover.showCover 0
+    call Random.setSeed 1
     pop temp 0
 label Main_0
     push static 9
     not
     not
     if-goto Main_1
+    push static 2
+    push static 6
+    call Kid.updatePos 2
+    pop temp 0
     push pointer 0
     call Main.groundMoving 1
+    pop temp 0
+    push constant 500
+    call Sys.wait 1
     pop temp 0
     goto Main_0
 label Main_1
@@ -223,20 +231,69 @@ label Main_11
 label Main_10
     push constant 0
     return
+function Main.checkOnGround 2
+    push constant 0
+    pop local 1
+label Main_12
+    push local 1
+    push constant 100
+    lt
+    not
+    if-goto Main_13
+    push local 1
+    push static 0
+    add
+    pop pointer 1
+    push that 0
+    pop local 0
+    push argument 1
+    push argument 2
+    add
+    push local 0
+    call Ground.getY 1
+    eq
+    push argument 0
+    push local 0
+    call Ground.getX 1
+    push constant 1
+    sub
+    gt
+    and
+    push argument 0
+    push local 0
+    call Ground.getX 1
+    push local 0
+    call Ground.getLen 1
+    add
+    lt
+    and
+    not
+    if-goto Main_15
+    push constant 1
+    neg
+    return
+    goto Main_14
+label Main_15
+label Main_14
+    push local 1
+    push constant 1
+    add
+    pop local 1
+    goto Main_12
+label Main_13
+    push constant 0
+    return
 function Main.generateRandNum 1
     push argument 0
     pop pointer 0
     push constant 0
     pop local 0
-    push constant 6571
-    call Random.setSeed 1
-    pop temp 0
-label Main_12
+label Main_16
     push local 0
     push argument 1
     lt
     not
-    if-goto Main_13
+    if-goto Main_17
     push local 0
     push static 1
     add
@@ -250,8 +307,8 @@ label Main_12
     push constant 1
     add
     pop local 0
-    goto Main_12
-label Main_13
+    goto Main_16
+label Main_17
     push constant 0
     return
 function Main.drawEnd 0

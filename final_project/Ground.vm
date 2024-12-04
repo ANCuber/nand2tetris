@@ -58,6 +58,11 @@ function Ground.getY 0
     pop pointer 0
     push this 1
     return
+function Ground.getLen 0
+    push argument 0
+    pop pointer 0
+    push this 2
+    return
 function Ground.drawObject 0
     push argument 0
     pop pointer 0

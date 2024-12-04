@@ -24,12 +24,15 @@ class Ground {
         let diff = 7;
         return this;
     }
-    
+
     method int getX() {
         return x;
     }
     method int getY() {
         return y;
+    }
+    method int getLen() {
+        return len;
     }
     
     method void drawObject() {

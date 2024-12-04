@@ -19,19 +19,19 @@ function Cover.showCover 1
     call String.appendChar 2
     push constant 32
     call String.appendChar 2
-    push constant 39
+    push constant 65
+    call String.appendChar 2
+    push constant 78
+    call String.appendChar 2
+    push constant 89
+    call String.appendChar 2
+    push constant 32
+    call String.appendChar 2
+    push constant 75
     call String.appendChar 2
     push constant 69
     call String.appendChar 2
-    push constant 110
-    call String.appendChar 2
-    push constant 116
-    call String.appendChar 2
-    push constant 101
-    call String.appendChar 2
-    push constant 114
-    call String.appendChar 2
-    push constant 39
+    push constant 89
     call String.appendChar 2
     push constant 32
     call String.appendChar 2
@@ -73,26 +73,9 @@ function Cover.showCover 1
     call String.appendChar 2
     call Output.printString 1
     pop temp 0
-label Cover_0
-    push constant 1
-    neg
-    not
-    if-goto Cover_1
     call Keyboard.readChar 0
     pop local 0
-    push local 0
-    push constant 128
-    eq
-    not
-    if-goto Cover_3
     call Screen.clearScreen 0
     pop temp 0
-    push constant 0
-    return
-    goto Cover_2
-label Cover_3
-label Cover_2
-    goto Cover_0
-label Cover_1
-    push constant 0
+    push local 0
     return
