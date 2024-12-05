@@ -2,11 +2,13 @@ function Main.main 0
     push pointer 0
     call Main.initializing 1
     pop temp 0
-    call Cover.showCover 0
+    call Background.showStart 0
     call Random.setSeed 1
     pop temp 0
+    call Background.showMainBackground 0
+    pop temp 0
 label Main_0
-    push static 9
+    push static 10
     not
     not
     if-goto Main_1
@@ -17,46 +19,24 @@ label Main_0
     push pointer 0
     call Main.groundMoving 1
     pop temp 0
-    push constant 500
+    push static 9
     call Sys.wait 1
     pop temp 0
     goto Main_0
 label Main_1
-    call Cover.showFail 0
-    pop temp 0
-    push constant 0
-    return
     push constant 10000
     call Sys.wait 1
     pop temp 0
-    call Screen.clearScreen 0
+    push static 11
+    not
+    if-goto Main_3
+    call Background.showSucceed 0
     pop temp 0
-    push constant 11
-    push constant 15
-    call Output.moveCursor 2
+    goto Main_2
+label Main_3
+    call Background.showFail 0
     pop temp 0
-    push constant 9
-    call String.new 1
-    push constant 67
-    call String.appendChar 2
-    push constant 111
-    call String.appendChar 2
-    push constant 110
-    call String.appendChar 2
-    push constant 103
-    call String.appendChar 2
-    push constant 114
-    call String.appendChar 2
-    push constant 97
-    call String.appendChar 2
-    push constant 116
-    call String.appendChar 2
-    push constant 115
-    call String.appendChar 2
-    push constant 33
-    call String.appendChar 2
-    call Output.printString 1
-    pop temp 0
+label Main_2
     push constant 0
     return
 function Main.initializing 1
@@ -74,8 +54,12 @@ function Main.initializing 1
     pop static 8
     push constant 1
     pop static 6
-    push constant 0
+    push constant 500
     pop static 9
+    push constant 0
+    pop static 10
+    push constant 0
+    pop static 11
     push pointer 0
     push constant 100
     call Main.generateRandNum 2
@@ -113,12 +97,12 @@ function Main.initBackground 2
     pop local 0
     push constant 120
     pop local 1
-label Main_2
+label Main_4
     push local 0
     push constant 100
     lt
     not
-    if-goto Main_3
+    if-goto Main_5
     push constant 2
     call Random.randRange 1
     pop static 5
@@ -126,7 +110,7 @@ label Main_2
     push constant 0
     eq
     not
-    if-goto Main_5
+    if-goto Main_7
     push local 0
     push static 0
     add
@@ -144,8 +128,8 @@ label Main_2
     pop pointer 1
     push temp 0
     pop that 0
-    goto Main_4
-label Main_5
+    goto Main_6
+label Main_7
     push local 0
     push static 0
     add
@@ -163,7 +147,7 @@ label Main_5
     pop pointer 1
     push temp 0
     pop that 0
-label Main_4
+label Main_6
     push local 1
     push static 7
     add
@@ -172,14 +156,16 @@ label Main_4
     push constant 1
     add
     pop local 0
-    goto Main_2
-label Main_3
+    goto Main_4
+label Main_5
     push constant 0
     return
-function Main.fail 0
+function Main.gameFail 0
     push constant 1
     neg
-    pop static 9
+    pop static 10
+    push constant 0
+    pop static 11
     push constant 0
     return
 function Main.groundMoving 2
@@ -187,12 +173,12 @@ function Main.groundMoving 2
     pop pointer 0
     push constant 0
     pop local 0
-label Main_6
+label Main_8
     push local 0
-    push constant 100
+    push constant 10
     lt
     not
-    if-goto Main_7
+    if-goto Main_9
     push local 0
     push static 0
     add
@@ -207,8 +193,8 @@ label Main_6
     push constant 1
     add
     pop local 0
-    goto Main_6
-label Main_7
+    goto Main_8
+label Main_9
     push local 1
     call Ground.getY 1
     push constant 150
@@ -218,38 +204,44 @@ label Main_7
     push constant 240
     gt
     not
-    if-goto Main_9
+    if-goto Main_11
     push pointer 0
     call Main.drawEnd 1
     pop temp 0
-    goto Main_8
-label Main_9
-label Main_8
+    goto Main_10
+label Main_11
+label Main_10
     push local 1
     call Ground.getY 1
     push constant 3
     push constant 1
     add
     lt
+    push static 2
+    call Kid.getOnGround 1
+    and
     not
-    if-goto Main_11
+    if-goto Main_13
     push constant 1
     neg
-    pop static 9
-    goto Main_10
-label Main_11
-label Main_10
+    pop static 11
+    push constant 1
+    neg
+    pop static 10
+    goto Main_12
+label Main_13
+label Main_12
     push constant 0
     return
 function Main.checkOnGround 2
     push constant 0
     pop local 1
-label Main_12
+label Main_14
     push local 1
     push constant 100
     lt
     not
-    if-goto Main_13
+    if-goto Main_15
     push local 1
     push static 0
     add
@@ -278,19 +270,48 @@ label Main_12
     lt
     and
     not
-    if-goto Main_15
+    if-goto Main_17
+    push local 0
+    call Ground.getType 1
+    push constant 1
+    eq
+    not
+    if-goto Main_19
+    call Main.gameFail 0
+    pop temp 0
+    goto Main_18
+label Main_19
+label Main_18
     push constant 1
     neg
     return
-    goto Main_14
-label Main_15
-label Main_14
+    goto Main_16
+label Main_17
+label Main_16
     push local 1
     push constant 1
     add
     pop local 1
-    goto Main_12
-label Main_13
+    goto Main_14
+label Main_15
+    push static 8
+    push constant 256
+    eq
+    not
+    push static 8
+    push argument 1
+    push argument 2
+    add
+    eq
+    and
+    not
+    if-goto Main_21
+    push constant 1
+    neg
+    return
+    goto Main_20
+label Main_21
+label Main_20
     push constant 0
     return
 function Main.generateRandNum 1
@@ -298,12 +319,12 @@ function Main.generateRandNum 1
     pop pointer 0
     push constant 0
     pop local 0
-label Main_16
+label Main_22
     push local 0
     push argument 1
     lt
     not
-    if-goto Main_17
+    if-goto Main_23
     push local 0
     push static 1
     add
@@ -317,8 +338,8 @@ label Main_16
     push constant 1
     add
     pop local 0
-    goto Main_16
-label Main_17
+    goto Main_22
+label Main_23
     push constant 0
     return
 function Main.drawEnd 0
@@ -338,4 +359,7 @@ function Main.drawEnd 0
     call Screen.drawLine 4
     pop temp 0
     push constant 0
+    return
+function Main.getLayerEnd 0
+    push static 8
     return

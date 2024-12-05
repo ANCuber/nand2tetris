@@ -16,7 +16,7 @@ function Ground.new 0
     goto Ground_0
 label Ground_1
     push argument 1
-    push constant 7
+    push constant 6
     add
     pop this 1
 label Ground_0
@@ -62,6 +62,11 @@ function Ground.getLen 0
     push argument 0
     pop pointer 0
     push this 2
+    return
+function Ground.getType 0
+    push argument 0
+    pop pointer 0
+    push this 5
     return
 function Ground.drawObject 0
     push argument 0
@@ -295,7 +300,7 @@ function Ground.moveUp 0
     lt
     push this 1
     and
-    push constant 3
+    push constant 5
     gt
     not
     if-goto Ground_13
@@ -314,7 +319,7 @@ label Ground_12
     lt
     push this 1
     and
-    push constant 3
+    push constant 5
     gt
     not
     if-goto Ground_15

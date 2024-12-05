@@ -9,7 +9,7 @@ class Ground {
         if (type = 0) {
             let y = yVal;
         } else {
-            let y = yVal+7;
+            let y = yVal+6;
         }
         if (type = 0) {
             let len = 75;
@@ -33,6 +33,9 @@ class Ground {
     }
     method int getLen() {
         return len;
+    }
+    method int getType() {
+        return type;
     }
     
     method void drawObject() {
@@ -81,11 +84,11 @@ class Ground {
     }
     
     method void moveUp(int dh) {
-        if (y < 248 & y > 3) {
+        if (y < 248 & y > 5) {
             do clearObject();
         }
         let y = y-dh;
-        if (y < 248 & y > 3) {
+        if (y < 248 & y > 5) {
             do drawObject();
         }
         return;

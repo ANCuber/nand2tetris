@@ -2,26 +2,26 @@ class Main {
     static Array objs, randNum;
     static Kid kd;
     static int kd_x, kd_y;
-    static int rand, speed, layerDiff, layerEnd;
-    static boolean breakMainWhile;
+    static int rand, speed, layerDiff, layerEnd, waiting;
+    static boolean breakMainWhile, passGame;
 
     function void main() {
         do initializing();
-        do Random.setSeed(Cover.showCover());
+        do Random.setSeed(Background.showStart());
         
+        do Background.showMainBackground();
         while(~breakMainWhile) {
             do kd.updatePos(speed);
             do groundMoving();
-            do Sys.wait(500);
+            do Sys.wait(waiting);
         }
 
-        do Cover.showFail();
-        return;
-
         do Sys.wait(10000);
-        do Screen.clearScreen();
-        do Output.moveCursor(11, 15);
-        do Output.printString("Congrats!");
+        if (passGame) {
+            do Background.showSucceed();
+        } else {
+            do Background.showFail();
+        }
         
         return;
     }
@@ -35,7 +35,9 @@ class Main {
         let layerDiff = 80;
         let layerEnd = 256;
         let speed = 1;
+        let waiting = 500;
         let breakMainWhile = false;
+        let passGame = false;
 
         do generateRandNum(100);
         do initBackground();
@@ -69,8 +71,9 @@ class Main {
         return;
     }
 
-    function void fail() {
+    function void gameFail() {
         let breakMainWhile = true;
+        let passGame = false;
         return;
     }
 
@@ -79,7 +82,7 @@ class Main {
         var Ground tmp;
 
         let i = 0;
-        while(i < 100) {
+        while(i < 10) {// change to 100
             let tmp = objs[i];
             do tmp.moveUp(speed);
             
@@ -89,7 +92,8 @@ class Main {
         if (tmp.getY() < 150 & layerEnd > 240) {
             do drawEnd();
         }
-        if (tmp.getY() < (3+1)) {
+        if ((tmp.getY() < (3+1)) & kd.getOnGround()) {
+            let passGame = true;
             let breakMainWhile = true;
         }
 
@@ -105,10 +109,17 @@ class Main {
         while(i < 100) {
             let tmp = objs[i];
             if ((cury+size = tmp.getY()) & (curx > (tmp.getX()-1)) & (curx < (tmp.getX()+tmp.getLen()))) {
+                if (tmp.getType() = 1) {
+                    do Main.gameFail();
+                }
                 return true;
             } 
             
             let i = i+1;
+        }
+
+        if ((~(layerEnd = 256)) & (layerEnd = (cury+size))) {
+            return true;
         }
 
         return false;
@@ -131,6 +142,10 @@ class Main {
         do Screen.setColor(1);
         do Screen.drawLine(0, layerEnd, 511, layerEnd);
         return;
+    }
+
+    function int getLayerEnd() {
+        return layerEnd;
     }
 }
 

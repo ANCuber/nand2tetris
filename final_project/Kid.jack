@@ -21,7 +21,10 @@ class Kid {
     method int getY() {
         return y;
     }
-
+    method boolean getOnGround() {
+        return onGround;
+    }
+    
     method void drawKid(int ctrl) {
         do Screen.setColor(ctrl);
         do Screen.drawCircle(x, y, h);
@@ -63,8 +66,8 @@ class Kid {
             }
         }
 
-        if (y > 250 | y < 7) {
-            do Main.fail();
+        if ((Main.getLayerEnd() = 256) & (y > 250 | y < 7)) {
+            do Main.gameFail();
         }
         
         return;

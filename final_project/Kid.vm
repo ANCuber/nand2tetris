@@ -31,6 +31,11 @@ function Kid.getY 0
     pop pointer 0
     push this 1
     return
+function Kid.getOnGround 0
+    push argument 0
+    pop pointer 0
+    push static 1
+    return
 function Kid.drawKid 0
     push argument 0
     pop pointer 0
@@ -150,6 +155,9 @@ label Kid_10
 label Kid_13
 label Kid_12
 label Kid_4
+    call Main.getLayerEnd 0
+    push constant 256
+    eq
     push this 1
     push constant 250
     gt
@@ -157,9 +165,10 @@ label Kid_4
     or
     push constant 7
     lt
+    and
     not
     if-goto Kid_15
-    call Main.fail 0
+    call Main.gameFail 0
     pop temp 0
     goto Kid_14
 label Kid_15
