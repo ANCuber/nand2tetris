@@ -54,13 +54,11 @@ class Kid {
                 do drawKid(1);
             }
         } else {
-            //TODO: gravity
-            //let vel = vel+g;
-            let vel = g;
+            let vel = vel+g;
             if (y < 250) {
                 do drawKid(0);
             }
-            let y = y+vel;
+            let y = y+Math.divide(vel,3);
             if (y < 250) {
                 do drawKid(1);
             }

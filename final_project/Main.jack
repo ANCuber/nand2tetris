@@ -7,7 +7,7 @@ class Main {
 
     function void main() {
         do initializing();
-        do Random.setSeed(Background.showStart());
+        do Random.setSeed(73*Background.showStart()-101);
         
         do Background.showMainBackground();
         while(~breakMainWhile) {
@@ -16,7 +16,7 @@ class Main {
             do Sys.wait(waiting);
         }
 
-        do Sys.wait(10000);
+        do Sys.wait(3000);
         if (passGame) {
             do Background.showSucceed();
         } else {
@@ -108,17 +108,18 @@ class Main {
         let i = 0;
         while(i < 100) {
             let tmp = objs[i];
+            if ((tmp.getType() = 1) & (cury+size < tmp.getY()+3) & (cury+size > tmp.getY()-2) & (curx > (tmp.getX()-1)) & (curx < (tmp.getX()+tmp.getLen()))) {
+                do Main.gameFail();
+                return true;
+            }
             if ((cury+size = tmp.getY()) & (curx > (tmp.getX()-1)) & (curx < (tmp.getX()+tmp.getLen()))) {
-                if (tmp.getType() = 1) {
-                    do Main.gameFail();
-                }
                 return true;
             } 
             
             let i = i+1;
         }
 
-        if ((~(layerEnd = 256)) & (layerEnd = (cury+size))) {
+        if ((~(layerEnd = 256)) & (layerEnd = (cury+size+1))) {
             return true;
         }
 
@@ -132,6 +133,8 @@ class Main {
         while (i < size) {
             let randNum[i] = Random.randRange(280);
             let i = i+1;
+
+            //do random.setseed(i+randnum[i]);
         }
 
         return;

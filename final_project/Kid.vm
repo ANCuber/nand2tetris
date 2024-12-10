@@ -124,7 +124,9 @@ label Kid_9
 label Kid_8
     goto Kid_4
 label Kid_5
+    push this 3
     push static 0
+    add
     pop this 3
     push this 1
     push constant 250
@@ -140,6 +142,8 @@ label Kid_11
 label Kid_10
     push this 1
     push this 3
+    push constant 3
+    call Math.divide 2
     add
     pop this 1
     push this 1
