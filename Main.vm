@@ -1,0 +1,28 @@
+function Main.main 1
+push constant 10
+pop local 0
+push constant 12341
+call Random.set_seed 1
+pop temp 0
+label WHILE_EXP0
+push constant 1
+push constant 0
+gt
+not
+if-goto WHILE_END0
+push constant 0
+push constant 0
+call Output.moveCursor 2
+pop temp 0
+call Screen.clearScreen 0
+pop temp 0
+call Random.get_num 0
+call Output.printInt 1
+pop temp 0
+push constant 200
+call Sys.wait 1
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
