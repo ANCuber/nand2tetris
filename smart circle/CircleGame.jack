@@ -20,6 +20,7 @@ class CircleGame {
             if(key = 140) {
                 let exit = true;
             }
+            do circle.move();
         }
         return;
     }

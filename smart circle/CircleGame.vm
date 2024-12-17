@@ -70,6 +70,9 @@ push constant 0
 not
 pop local 0
 label IF_FALSE3
+push this 0
+call Circle.move 1
+pop temp 0
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0

@@ -1,0 +1,5 @@
+class Data {
+    static Array AX, AY;
+    let AX = Array.new(31);
+    let AY = Array.new(31);
+}

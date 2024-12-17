@@ -104,4 +104,33 @@ class Circle {
         do Sys.wait(500);
         return;
     }
+    method void updateRate() { // update acceleration
+        let ax = Data.AX[(Math.devide((180-angle), 6))];
+        let ay = Data.AY[(Math.devide((180-angle), 6))];
+        return;
+    }
+    method void updateSpeed() { // update velocity
+        let vx = vx + ax;
+        let vy = vy + ay;
+        return;
+    }
+    method void move() {
+        if(x + vx > -1) {
+            if(x + vx < 512) {
+                let x = x + vx;
+            }
+        }
+        // if(x + vx < -1) { let x = 0; }
+        // if(x + vx > 511) { let x = 511; }
+        if(y + vy > -1) {
+            if(y + vy < 256) {
+                let y = y + vy;
+            }
+        }
+        // if(y + vy < -1) { let y = 0; }
+        // if(y + vy > 256) { let y = 255; }
+        do updateSpeed();
+        do updateRate();
+        return;
+    }
 }
