@@ -6,11 +6,14 @@ push constant 0
 push constant 0
 push constant 0
 push constant 0
-push constant 0
+push constant 90
 call CircleGame.new 8
 pop local 0
 push local 0
 call CircleGame.run 1
+pop temp 0
+push local 0
+call CircleGame.dispose 1
 pop temp 0
 push constant 0
 return

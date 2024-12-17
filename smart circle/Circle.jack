@@ -1,7 +1,7 @@
 class Circle {
-    field int x, y, size;
-    field int ax, ay;
-    field int vx, vy;
+    field int x, y, size; // center of mass
+    field int ax, ay; // acceleration
+    field int vx, vy; // velocity
     field int angle;
     constructor Circle new(int sx, int sy, int ssize, int sax, int say, int svx, int svy, int sangle) {
         let x = sx;
@@ -11,7 +11,7 @@ class Circle {
         let ay = say;
         let vx = svx;
         let vy = svy;
-        let angle = angle;
+        let angle = sangle;
         return this;
     }
     method int getx() { return x; }
@@ -68,11 +68,40 @@ class Circle {
         return;
     }
     method void incAngle() {
-        let angle = angle + 5;
+        if (angle < 175) {
+            let angle = angle + 6;
+        }
         return;
     }
     method void decAngle() {
-        let angle = angle - 5;
+        if (angle > 5) {
+            let angle = angle - 6;
+        }
+        return;
+    }
+    method void printInfo() {
+        do Screen.clearScreen();
+        do draw();
+        do Output.moveCursor(0, 0);
+        do Output.printString("angle: ");
+        do Output.printInt(angle);
+        do Output.println();
+        
+        do Output.printString("(vx, vy): ");
+        do Output.printString("(");
+        do Output.printInt(vx);
+        do Output.printString(", ");
+        do Output.printInt(vy);
+        do Output.printString(")");
+        do Output.println();
+
+        do Output.printString("(ax, ay): ");
+        do Output.printString("(");
+        do Output.printInt(ax);
+        do Output.printString(", ");
+        do Output.printInt(ay);
+        do Output.printString(")");
+        do Sys.wait(500);
         return;
     }
 }

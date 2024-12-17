@@ -10,12 +10,8 @@ class CircleGame {
         let exit = false;
         do circle.draw();
         while (~exit) {
-            do Screen.clearScreen();
-            do circle.draw();
-            do Output.moveCursor(0, 0);
-            do Output.printString("angle: ");
-            do Output.printInt(circle.getAngle());
-            do Sys.wait(100);
+            do circle.printInfo();
+            // do circle.draw();
             let key = Keyboard.keyPressed();
             if(~(key = 0)) {
                 if(key = 130) { do circle.decAngle(); }
@@ -25,6 +21,11 @@ class CircleGame {
                 let exit = true;
             }
         }
+        return;
+    }
+    method void dispose() {
+        do circle.dispose();
+        do Memory.deAlloc(this);
         return;
     }
 }
