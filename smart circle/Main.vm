@@ -1,0 +1,16 @@
+function Main.main 1
+push constant 256
+push constant 20
+push constant 10
+push constant 0
+push constant 0
+push constant 0
+push constant 0
+push constant 0
+call CircleGame.new 8
+pop local 0
+push local 0
+call CircleGame.run 1
+pop temp 0
+push constant 0
+return

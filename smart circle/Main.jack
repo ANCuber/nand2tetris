@@ -1,0 +1,9 @@
+class Main {
+    function void main() {
+        var CircleGame game;
+        let game = CircleGame.new(256, 20, 10, 0, 0, 0, 0, 0);
+        do game.run();
+        return;
+        
+    }
+}

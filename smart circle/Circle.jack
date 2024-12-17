@@ -1,0 +1,78 @@
+class Circle {
+    field int x, y, size;
+    field int ax, ay;
+    field int vx, vy;
+    field int angle;
+    constructor Circle new(int sx, int sy, int ssize, int sax, int say, int svx, int svy, int sangle) {
+        let x = sx;
+        let y = sy;
+        let size = ssize;
+        let ax = sax;
+        let ay = say;
+        let vx = svx;
+        let vy = svy;
+        let angle = angle;
+        return this;
+    }
+    method int getx() { return x; }
+    method int gety() { return y; }
+    method int getAngle() { return angle; }
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawCircle(x, y, size);
+        return;
+    }
+    method void erase() {
+        do Screen.setColor(false);
+        do Screen.drawCircle(x, y, size);
+        return;
+    }
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+    method void moveUp() {
+        if(y-2-size > -1) {
+            do erase();
+            let y = y-2;
+            do draw();
+            do Sys.wait(3);
+        }
+        return;
+    }
+    method void moveDown() {
+        if(y+2+size < 256) {
+            do erase();
+            let y = y+2;
+            do draw();
+            do Sys.wait(3);
+        }
+        return;
+    }
+    method void moveRight() {
+        if(x+2+size < 512) {
+            do erase();
+            let x = x+2;
+            do draw();
+            do Sys.wait(3);
+        }
+        return;
+    }
+    method void moveLeft() {
+        if(x-2-size > -1) {
+            do erase();
+            let x = x - 2;
+            do draw();
+            do Sys.wait(3);
+        }
+        return;
+    }
+    method void incAngle() {
+        let angle = angle + 5;
+        return;
+    }
+    method void decAngle() {
+        let angle = angle - 5;
+        return;
+    }
+}
