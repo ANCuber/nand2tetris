@@ -3,6 +3,7 @@ class Circle {
     field int ax, ay; // acceleration
     field int vx, vy; // velocity
     field int angle;
+    field Data data;
     constructor Circle new(int sx, int sy, int ssize, int sax, int say, int svx, int svy, int sangle) {
         let x = sx;
         let y = sy;
@@ -12,6 +13,7 @@ class Circle {
         let vx = svx;
         let vy = svy;
         let angle = sangle;
+        let data = Data.new();
         return this;
     }
     method int getx() { return x; }
@@ -105,8 +107,8 @@ class Circle {
         return;
     }
     method void updateRate() { // update acceleration
-        let ax = Data.AX[(Math.devide((180-angle), 6))];
-        let ay = Data.AY[(Math.devide((180-angle), 6))];
+        let ax = data.getdAX((Math.devide((180-angle), 6)));
+        let ay = data.getdAY((Math.devide((180-angle), 6)));
         return;
     }
     method void updateSpeed() { // update velocity

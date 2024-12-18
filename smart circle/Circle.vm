@@ -1,5 +1,5 @@
 function Circle.new 0
-push constant 8
+push constant 9
 call Memory.alloc 1
 pop pointer 0
 push argument 0
@@ -18,6 +18,8 @@ push argument 6
 pop this 6
 push argument 7
 pop this 7
+call Data.new 0
+pop this 8
 push pointer 0
 return
 function Circle.getx 0
@@ -359,6 +361,97 @@ call Output.printString 1
 pop temp 0
 push constant 500
 call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function Circle.updateRate 0
+push argument 0
+pop pointer 0
+push this 8
+push constant 180
+push this 7
+sub
+push constant 6
+call Math.devide 2
+call Data.getdAX 2
+pop this 3
+push this 8
+push constant 180
+push this 7
+sub
+push constant 6
+call Math.devide 2
+call Data.getdAY 2
+pop this 4
+push constant 0
+return
+function Circle.updateSpeed 0
+push argument 0
+pop pointer 0
+push this 5
+push this 3
+add
+pop this 5
+push this 6
+push this 4
+add
+pop this 6
+push constant 0
+return
+function Circle.move 0
+push argument 0
+pop pointer 0
+push this 0
+push this 5
+add
+push constant 1
+neg
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push this 5
+add
+push constant 512
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+push this 5
+add
+pop this 0
+label IF_FALSE1
+label IF_FALSE0
+push this 1
+push this 6
+add
+push constant 1
+neg
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 1
+push this 6
+add
+push constant 256
+lt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 1
+push this 6
+add
+pop this 1
+label IF_FALSE3
+label IF_FALSE2
+push pointer 0
+call Circle.updateSpeed 1
+pop temp 0
+push pointer 0
+call Circle.updateRate 1
 pop temp 0
 push constant 0
 return

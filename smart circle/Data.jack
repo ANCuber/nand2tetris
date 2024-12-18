@@ -1,5 +1,78 @@
 class Data {
-    static Array AX, AY;
-    let AX = Array.new(31);
+    field Array AX, AY;
+    constructor Data new() {
+        let AX = Array.new(31);
     let AY = Array.new(31);
+    let AX[0] = -3;
+        let AX[1] = -2;
+        let AX[2] = -2;
+        let AX[3] = -2;
+        let AX[4] = -2;
+        let AX[5] = -2;
+        let AX[6] = -2;
+        let AX[7] = -2;
+        let AX[8] = -2;
+        let AX[9] = -1;
+        let AX[10] = -1;
+        let AX[11] = -1;
+        let AX[12] = 0;
+        let AX[13] = 0;
+        let AX[14] = 0;
+        let AX[15] = 0;
+        let AX[16] = 0;
+        let AX[17] = 0;
+        let AX[18] = 0;
+        let AX[19] = 1;
+        let AX[20] = 1;
+        let AX[21] = 1;
+        let AX[22] = 2;
+        let AX[23] = 2;
+        let AX[24] = 2;
+        let AX[25] = 2;
+        let AX[26] = 2;
+        let AX[27] = 2;
+        let AX[28] = 2;
+        let AX[29] = 2;
+        let AX[30] = 3;
+
+        // 填入 AY 的值
+        let AY[0] = 0;
+        let AY[1] = 0;
+        let AY[2] = 0;
+        let AY[3] = 0;
+        let AY[4] = 1;
+        let AY[5] = 1;
+        let AY[6] = 1;
+        let AY[7] = 2;
+        let AY[8] = 2;
+        let AY[9] = 2;
+        let AY[10] = 2;
+        let AY[11] = 2;
+        let AY[12] = 2;
+        let AY[13] = 2;
+        let AY[14] = 2;
+        let AY[15] = 3;
+        let AY[16] = 2;
+        let AY[17] = 2;
+        let AY[18] = 2;
+        let AY[19] = 2;
+        let AY[20] = 2;
+        let AY[21] = 2;
+        let AY[22] = 2;
+        let AY[23] = 2;
+        let AY[24] = 1;
+        let AY[25] = 1;
+        let AY[26] = 1;
+        let AY[27] = 0;
+        let AY[28] = 0;
+        let AY[29] = 0;
+        let AY[30] = 0;
+        return this;
+    }
+    method int getdAX(int i) {
+        return AX[i];
+    }
+    method int getdAY(int i) {
+        return AY[i];
+    }
 }
