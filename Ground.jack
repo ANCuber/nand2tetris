@@ -1,17 +1,105 @@
+/* 
+ Subunit of class Terrain.
+ ----
+ Give me the length and the maximal slope for initializing.
+ Give me the endpoint(x2,y2) of the previous ground.
+ Give me the direction of the previous ground.
+ ----
+ Can handle constructing a Ground or drawing/clearing a Ground.
+ Call getters to get some info of the object.
+*/
+
 class Ground{
+    static int len, maxHeight; // lenght and maximal slope(+-maxHeight/len)
     field int x1, y1, x2, y2; // position
-    field int type; // 0 for slopes, 1 for horizontal grounds
-    field int id;
+    field int type; // 1 for slopes, 0 for horizontal grounds
+    field int dir;
+
+    // initializing
+    function void Init(int ln, int mxh) { // set length and maximal slope
+        let len = ln;
+        let maxHeight = mxh;
+        return;
+    }
     
-    constructor Ground new(int xb, int yb) {
+    // constructor
+    constructor Ground new(int xb, int yb, int pdH) { // pdH should be -1(go down), 0(horizontal) or 1(go up)
+        var int rand;
+        var int dH;
+
         let x1 = xb;
         let y1 = yb;
+        let rand = Random.get_num();
 
+        if (rand > 5000) { // set ground type
+            // slope
+            let type = 1;
+            
+            let rand = Random.get_num();
+            let dH = rand-Math.divide(rand,maxHeight);
+            let rand = Random.get_num();
+            let rand = rand-Math.divide(rand,4); // rand % 4, decide to go up or down, then weighted by pdH
         
+            let x2 = x1+len;
+            if (rand < 2+pdH) { // prefer the same slope direction
+                let y2 = y1-dH; // - for up
+                let dir = 1;
+            } else {
+                let y2 = y1+dH; // + for down
+                let dir = -1;
+            }
+            
+            // check boundary conditions
+            if (y2 < 1) {
+                let y2 = 1;
+            } 
+            if (y2 > 254) {
+                let y2 = 254;
+            }
+            
+            // change to a horizontal ground for some cases
+            if (y2 == y1) {
+                let type = 0;
+                let dir = 0;
+            }
+        } else {
+            // horizontal ground
+            let type = 0;
+            let x2 = x1+len;
+            let y2 = y1;
+            let dir = 0;
+        }
     }
 
+    // getters
+    method int get_end_x() {
+        return x2;
+    }
+    method int get_end_y() {
+        return y2;
+    }
+    method int get_str_x() {
+        return x1;
+    }
+    method int get_str_y() {
+        return y1;
+    }
+
+    method int get_dir() {
+        return dir;
+    }
+
+    // setters
+    method void set_xs(int dS) {
+        let x1 = x1+dS;
+        let x2 = x2+dS;
+        return;
+    }
+
+    // drawing
     method void DrawOrClear(int ctrl) { // 0 for clearing, 1 for drawing
         do Screen.setColor(ctrl);
         do drawLine(x1, y1, x2, y2);
+        return;
     }
 }
