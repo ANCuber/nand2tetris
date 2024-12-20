@@ -1,4 +1,5 @@
 /* 
+ You should not access this class directly in Main.
  Subunit of class Terrain.
  ----
  Give me the length and the maximal slope for initializing.
@@ -93,7 +94,7 @@ class Ground {
     }
 
     // setters
-    method void set_xs(int dS) {
+    method void upd_xs(int dS) {
         let x1 = x1+dS;
         let x2 = x2+dS;
         return;

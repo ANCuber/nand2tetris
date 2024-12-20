@@ -1,3 +1,7 @@
+/*
+ For testing.
+*/
+
 class Main {
     function void main() {
         var int i, tmp, q;
@@ -5,7 +9,17 @@ class Main {
         do Screen.clearScreen();
         do Random.set_seed(13257);
 
-        do Terrain.Init(51, 10, 50);// 51, 10, 50
+        do Terrain.Init(151, 10, 50);// 151, 10, 50
+
+        while(1 = 1) {
+            if (Keyboard.keyPressed() = 130) {// shift left
+                do Terrain.Shifting(-1);
+            }
+            if (Keyboard.keyPressed() = 132) {// shift right
+                do Terrain.Shifting(1);
+            }
+            do Sys.wait(200);
+        }
 
         return;
     }

@@ -13,7 +13,8 @@ function Terrain.Init 6
     push constant 0
     push static 1
     add
-    push constant 0
+    push constant 250
+    neg
     push constant 254
     push constant 1
     call Ground.new 3
@@ -78,9 +79,23 @@ label Terrain_2
     push that 0
     pop local 5
     push local 5
+    call Ground.get_str_x 1
+    push constant 0
+    gt
+    push local 5
+    call Ground.get_end_x 1
+    push constant 511
+    lt
+    and
+    not
+    if-goto Terrain_5
+    push local 5
     push constant 1
     call Ground.DrawOrClear 2
     pop temp 0
+    goto Terrain_4
+label Terrain_5
+label Terrain_4
     push local 0
     push constant 1
     add
@@ -92,12 +107,12 @@ label Terrain_3
 function Terrain.Shifting 2
     push constant 0
     pop local 0
-label Terrain_4
+label Terrain_6
     push local 0
     push static 0
     lt
     not
-    if-goto Terrain_5
+    if-goto Terrain_7
     push local 0
     push static 1
     add
@@ -110,21 +125,21 @@ label Terrain_4
     gt
     push local 1
     call Ground.get_end_x 1
-    and
     push constant 511
     lt
+    and
     not
-    if-goto Terrain_7
+    if-goto Terrain_9
     push local 1
     push constant 0
     call Ground.DrawOrClear 2
     pop temp 0
-    goto Terrain_6
-label Terrain_7
-label Terrain_6
+    goto Terrain_8
+label Terrain_9
+label Terrain_8
     push local 1
     push argument 0
-    call Ground.set_xs 2
+    call Ground.upd_xs 2
     pop temp 0
     push local 1
     call Ground.get_str_x 1
@@ -132,23 +147,23 @@ label Terrain_6
     gt
     push local 1
     call Ground.get_end_x 1
-    and
     push constant 511
     lt
+    and
     not
-    if-goto Terrain_9
+    if-goto Terrain_11
     push local 1
     push constant 1
     call Ground.DrawOrClear 2
     pop temp 0
-    goto Terrain_8
-label Terrain_9
-label Terrain_8
+    goto Terrain_10
+label Terrain_11
+label Terrain_10
     push local 0
     push constant 1
     add
     pop local 0
-    goto Terrain_4
-label Terrain_5
+    goto Terrain_6
+label Terrain_7
     push constant 0
     return

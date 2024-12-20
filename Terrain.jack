@@ -1,6 +1,6 @@
 /*
  Terrain
- Treat terrain as a class
+ Treat terrain as a class, not an object
  ----
  Always call Init(N,len,mxh) first to set a Terrain of N grounds, with length of len and maximal slope of mxh.
  Call Shifting(dS) to modify positions of the entire Terrain.
@@ -22,7 +22,7 @@ class Terrain {
         do Ground.Init(len, mxh);
         
         // initializing
-        let arr[0] = Ground.new(0,254,1);// default going up for the first Ground
+        let arr[0] = Ground.new(-250,254,1);// default going up for the first Ground
         let i = 1;
         while (i < Nums) { // 1 to N-1
             let tmp = arr[i-1];
@@ -38,7 +38,9 @@ class Terrain {
         let i = 0;
         while (i < Nums) {
             let tmp = arr[i];
-            do tmp.DrawOrClear(1);
+            if ((tmp.get_str_x()>0) & (tmp.get_end_x()<511)) {
+                do tmp.DrawOrClear(1);
+            }
 
             let i = i+1;
         }
@@ -53,11 +55,11 @@ class Terrain {
         let i = 0;
         while(i < Nums) {
             let tmp = arr[i];
-            if (tmp.get_str_x()>0 & tmp.get_end_x()<511) {
+            if ((tmp.get_str_x()>0) & (tmp.get_end_x()<511)) {
                 do tmp.DrawOrClear(0);// clear
             }
-            do tmp.set_xs(dS);// update
-            if (tmp.get_str_x()>0 & tmp.get_end_x()<511) {
+            do tmp.upd_xs(dS);// update
+            if ((tmp.get_str_x()>0) & (tmp.get_end_x()<511)) {
                 do tmp.DrawOrClear(1);// draw
             }
             

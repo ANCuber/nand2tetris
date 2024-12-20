@@ -4,10 +4,44 @@ function Main.main 3
     push constant 13257
     call Random.set_seed 1
     pop temp 0
-    push constant 51
+    push constant 151
     push constant 10
     push constant 50
     call Terrain.Init 3
     pop temp 0
+label Main_0
+    push constant 1
+    push constant 1
+    eq
+    not
+    if-goto Main_1
+    call Keyboard.keyPressed 0
+    push constant 130
+    eq
+    not
+    if-goto Main_3
+    push constant 1
+    neg
+    call Terrain.Shifting 1
+    pop temp 0
+    goto Main_2
+label Main_3
+label Main_2
+    call Keyboard.keyPressed 0
+    push constant 132
+    eq
+    not
+    if-goto Main_5
+    push constant 1
+    call Terrain.Shifting 1
+    pop temp 0
+    goto Main_4
+label Main_5
+label Main_4
+    push constant 200
+    call Sys.wait 1
+    pop temp 0
+    goto Main_0
+label Main_1
     push constant 0
     return
