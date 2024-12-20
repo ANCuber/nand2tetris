@@ -1,0 +1,10 @@
+class Main {
+	function void main () {
+		var Draw rocket;
+
+		let rocket = Draw.new(10, 10);
+
+		do rocket.drawRocket();
+		return;
+	}
+}
