@@ -1,0 +1,28 @@
+class Terrain{
+    static int Nums;
+    static array arr;
+
+    method void Init(int N) { // initialize N grounds
+        var int i;
+
+        let i = 0;
+        let Nums = N;
+        let arr = Array.new(N+5);
+
+        while (i < Nums) {
+            
+        }
+        
+        return;
+    }
+    
+    method void Shifting(int dS) { // shift +dS along x axis
+        var int i;
+        
+        let i = 0;
+
+        while(i < Nums) {
+            
+        }
+    }
+}

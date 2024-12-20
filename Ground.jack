@@ -1,0 +1,17 @@
+class Ground{
+    field int x1, y1, x2, y2; // position
+    field int type; // 0 for slopes, 1 for horizontal grounds
+    field int id;
+    
+    constructor Ground new(int xb, int yb) {
+        let x1 = xb;
+        let y1 = yb;
+
+        
+    }
+
+    method void DrawOrClear(int ctrl) { // 0 for clearing, 1 for drawing
+        do Screen.setColor(ctrl);
+        do drawLine(x1, y1, x2, y2);
+    }
+}
