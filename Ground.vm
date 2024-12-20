@@ -27,22 +27,22 @@ function Ground.new 2
     call Random.get_num 0
     pop local 0
     push local 0
-    push local 0
-    sub
+    push static 1
     push local 0
     push static 1
     call Math.divide 2
     call Math.multiply 2
+    sub
     pop local 1
     call Random.get_num 0
     pop local 0
     push local 0
-    push local 0
-    sub
+    push constant 4
     push local 0
     push constant 4
     call Math.divide 2
     call Math.multiply 2
+    sub
     pop local 0
     push argument 0
     push static 0

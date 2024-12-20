@@ -5,24 +5,7 @@ class Main {
         do Screen.clearScreen();
         do Random.set_seed(13257);
 
-        while (i < 10) {
-            let tmp = Random.get_num();
-            do Output.printInt(tmp);
-            do Output.printString("/7=");
-            do Output.printInt(Math.divide(tmp,7));
-            do Output.printString(",");
-            do Output.printInt(tmp);
-            do Output.printString("%7=");
-            let q = Math.divide(tmp,7);
-            do Output.printInt(tmp);
-            do Output.printString(",");
-            do Output.printInt(-7*q);
-            do Output.printString(",");
-            do Output.printInt(tmp+(-7*q));
-            do Output.println();
-        }
-
-        //do Terrain.Init(51, 10, 50);
+        do Terrain.Init(51, 10, 50);// 51, 10, 50
 
         return;
     }

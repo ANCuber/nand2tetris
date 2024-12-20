@@ -36,11 +36,12 @@ class Ground {
             let type = 1;
             
             let rand = Random.get_num();
-            let dH = rand-rand*Math.divide(rand,maxHeight);
+            let dH = rand-(maxHeight*Math.divide(rand,maxHeight));
             let rand = Random.get_num();
-            let rand = rand-rand*Math.divide(rand,4); // rand % 4, decide to go up or down, then weighted by pdH
+            let rand = rand-(4*Math.divide(rand,4)); // rand % 4, decide to go up or down, then weighted by pdH
         
             let x2 = xb+len;
+            //do Output.printInt(rand);
             if (rand < 2+pdH) { // prefer the same slope direction
                 let y2 = y1-dH; // - for up
                 let dir = 1;
