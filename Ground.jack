@@ -9,7 +9,7 @@
  Call getters to get some info of the object.
 */
 
-class Ground{
+class Ground {
     static int len, maxHeight; // lenght and maximal slope(+-maxHeight/len)
     field int x1, y1, x2, y2; // position
     field int type; // 1 for slopes, 0 for horizontal grounds
@@ -27,20 +27,20 @@ class Ground{
         var int rand;
         var int dH;
 
-        let x1 = xb;
+        let x1 = xb+1;
         let y1 = yb;
         let rand = Random.get_num();
 
-        if (rand > 5000) { // set ground type
+        if (rand > 1000) { // set ground type
             // slope
             let type = 1;
             
             let rand = Random.get_num();
-            let dH = rand-Math.divide(rand,maxHeight);
+            let dH = rand-rand*Math.divide(rand,maxHeight);
             let rand = Random.get_num();
-            let rand = rand-Math.divide(rand,4); // rand % 4, decide to go up or down, then weighted by pdH
+            let rand = rand-rand*Math.divide(rand,4); // rand % 4, decide to go up or down, then weighted by pdH
         
-            let x2 = x1+len;
+            let x2 = xb+len;
             if (rand < 2+pdH) { // prefer the same slope direction
                 let y2 = y1-dH; // - for up
                 let dir = 1;
@@ -58,17 +58,19 @@ class Ground{
             }
             
             // change to a horizontal ground for some cases
-            if (y2 == y1) {
+            if (y2 = y1) {
                 let type = 0;
                 let dir = 0;
             }
         } else {
             // horizontal ground
             let type = 0;
-            let x2 = x1+len;
+            let x2 = xb+len;
             let y2 = y1;
             let dir = 0;
         }
+
+        return this;
     }
 
     // getters
@@ -99,7 +101,7 @@ class Ground{
     // drawing
     method void DrawOrClear(int ctrl) { // 0 for clearing, 1 for drawing
         do Screen.setColor(ctrl);
-        do drawLine(x1, y1, x2, y2);
+        do Screen.drawLine(x1, y1, x2, y2);
         return;
     }
 }

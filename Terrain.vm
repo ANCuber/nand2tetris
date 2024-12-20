@@ -1,0 +1,154 @@
+function Terrain.Init 6
+    push argument 0
+    pop static 0
+    push static 0
+    push constant 5
+    add
+    call Array.new 1
+    pop static 1
+    push argument 1
+    push argument 2
+    call Ground.Init 2
+    pop temp 0
+    push constant 0
+    push static 1
+    add
+    push constant 0
+    push constant 254
+    push constant 1
+    call Ground.new 3
+    pop temp 0
+    pop pointer 1
+    push temp 0
+    pop that 0
+    push constant 1
+    pop local 0
+label Terrain_0
+    push local 0
+    push static 0
+    lt
+    not
+    if-goto Terrain_1
+    push local 0
+    push constant 1
+    sub
+    push static 1
+    add
+    pop pointer 1
+    push that 0
+    pop local 5
+    push local 5
+    call Ground.get_end_x 1
+    pop local 2
+    push local 5
+    call Ground.get_end_y 1
+    pop local 3
+    push local 5
+    call Ground.get_dir 1
+    pop local 4
+    push local 0
+    push static 1
+    add
+    push local 2
+    push local 3
+    push local 4
+    call Ground.new 3
+    pop temp 0
+    pop pointer 1
+    push temp 0
+    pop that 0
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto Terrain_0
+label Terrain_1
+    push constant 0
+    pop local 0
+label Terrain_2
+    push local 0
+    push static 0
+    lt
+    not
+    if-goto Terrain_3
+    push local 0
+    push static 1
+    add
+    pop pointer 1
+    push that 0
+    pop local 5
+    push local 5
+    push constant 1
+    call Ground.DrawOrClear 2
+    pop temp 0
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto Terrain_2
+label Terrain_3
+    push constant 0
+    return
+function Terrain.Shifting 2
+    push constant 0
+    pop local 0
+label Terrain_4
+    push local 0
+    push static 0
+    lt
+    not
+    if-goto Terrain_5
+    push local 0
+    push static 1
+    add
+    pop pointer 1
+    push that 0
+    pop local 1
+    push local 1
+    call Ground.get_str_x 1
+    push constant 0
+    gt
+    push local 1
+    call Ground.get_end_x 1
+    and
+    push constant 511
+    lt
+    not
+    if-goto Terrain_7
+    push local 1
+    push constant 0
+    call Ground.DrawOrClear 2
+    pop temp 0
+    goto Terrain_6
+label Terrain_7
+label Terrain_6
+    push local 1
+    push argument 0
+    call Ground.set_xs 2
+    pop temp 0
+    push local 1
+    call Ground.get_str_x 1
+    push constant 0
+    gt
+    push local 1
+    call Ground.get_end_x 1
+    and
+    push constant 511
+    lt
+    not
+    if-goto Terrain_9
+    push local 1
+    push constant 1
+    call Ground.DrawOrClear 2
+    pop temp 0
+    goto Terrain_8
+label Terrain_9
+label Terrain_8
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto Terrain_4
+label Terrain_5
+    push constant 0
+    return

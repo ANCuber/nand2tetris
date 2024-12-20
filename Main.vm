@@ -1,0 +1,90 @@
+function Main.main 3
+    call Screen.clearScreen 0
+    pop temp 0
+    push constant 13257
+    call Random.set_seed 1
+    pop temp 0
+label Main_0
+    push local 0
+    push constant 10
+    lt
+    not
+    if-goto Main_1
+    call Random.get_num 0
+    pop local 1
+    push local 1
+    call Output.printInt 1
+    pop temp 0
+    push constant 3
+    call String.new 1
+    push constant 47
+    call String.appendChar 2
+    push constant 55
+    call String.appendChar 2
+    push constant 61
+    call String.appendChar 2
+    call Output.printString 1
+    pop temp 0
+    push local 1
+    push constant 7
+    call Math.divide 2
+    call Output.printInt 1
+    pop temp 0
+    push constant 1
+    call String.new 1
+    push constant 44
+    call String.appendChar 2
+    call Output.printString 1
+    pop temp 0
+    push local 1
+    call Output.printInt 1
+    pop temp 0
+    push constant 3
+    call String.new 1
+    push constant 37
+    call String.appendChar 2
+    push constant 55
+    call String.appendChar 2
+    push constant 61
+    call String.appendChar 2
+    call Output.printString 1
+    pop temp 0
+    push local 1
+    push constant 7
+    call Math.divide 2
+    pop local 2
+    push local 1
+    call Output.printInt 1
+    pop temp 0
+    push constant 1
+    call String.new 1
+    push constant 44
+    call String.appendChar 2
+    call Output.printString 1
+    pop temp 0
+    push constant 7
+    neg
+    push local 2
+    call Math.multiply 2
+    call Output.printInt 1
+    pop temp 0
+    push constant 1
+    call String.new 1
+    push constant 44
+    call String.appendChar 2
+    call Output.printString 1
+    pop temp 0
+    push local 1
+    push constant 7
+    neg
+    push local 2
+    call Math.multiply 2
+    add
+    call Output.printInt 1
+    pop temp 0
+    call Output.println 0
+    pop temp 0
+    goto Main_0
+label Main_1
+    push constant 0
+    return
