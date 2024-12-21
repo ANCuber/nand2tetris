@@ -12,6 +12,12 @@ class Rocket {
 		return this;
 	}
 
+	method void changePos (int ix, int iy) {
+		let x = ix;
+		let y = iy;
+		return;
+	}
+
 	method void drawRocket () {
 		//mid
 		do Screen.drawPixel(0 + x, -8 + y);
