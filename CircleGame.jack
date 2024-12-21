@@ -11,16 +11,17 @@ class CircleGame {
         do circle.draw();
         while (~exit) {
             do circle.printInfo();
-            // do circle.draw();
             let key = Keyboard.keyPressed();
             if(~(key = 0)) {
                 if(key = 130) { do circle.decAngle(); }
                 if(key = 132) { do circle.incAngle(); }
+                if(key = 131) { do circle.updateRate(); }
             }
             if(key = 140) {
                 let exit = true;
             }
             do circle.move();
+            if(~(key = 131)) { do circle.resetRate(); }
         }
         return;
     }

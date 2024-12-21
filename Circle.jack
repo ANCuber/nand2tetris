@@ -1,24 +1,25 @@
 class Circle {
     field int x, y, size; // center of mass
+    field int oax, oay; // original acceleration
     field int ax, ay; // acceleration
     field int vx, vy; // velocity
     field int angle;
     field Array AX;
     field Array AY;
-    // field Data data;
     constructor Circle new(int sx, int sy, int ssize, int sax, int say, int svx, int svy, int sangle) {
         let x = sx;
         let y = sy;
         let size = ssize;
         let ax = sax;
         let ay = say;
+        let oax = sax;
+        let oay = say;
         let vx = svx;
         let vy = svy;
         let angle = sangle;
-        // let data = Data.new();
         let AX = Array.new(31);
-    let AY = Array.new(31);
-    let AX[0] = -3;
+        let AY = Array.new(31);
+        let AX[0] = -3;
         let AX[1] = -2;
         let AX[2] = -2;
         let AX[3] = -2;
@@ -49,8 +50,6 @@ class Circle {
         let AX[28] = 2;
         let AX[29] = 2;
         let AX[30] = 3;
-
-        // 填入 AY 的值
         let AY[0] = 0;
         let AY[1] = 0;
         let AY[2] = 0;
@@ -171,40 +170,24 @@ class Circle {
         do Output.printString(", ");
         do Output.printInt(ay);
         do Output.printString(")");
-        do Output.println();
-        do Output.printString("index: ");
-        do Output.printInt(Math.divide((180 - angle), 6));
         do Sys.wait(500);
-        // do Sys.wait(500);
         return;
     }
     method void updateRate() { // update acceleration
         var int idx;
-        // do Output.printString("Updating rate... ");
-        // do Output.printString("angle: ");
-        // do Output.printInt(angle);
-        // do Output.println();
-
-    // 計算 index 並檢查其值
         let idx = (180-angle)/6;
-        // let idx = 5;
-        // do Output.printString("Computed index: ");
-        // do Output.printInt(idx);
-        // do Output.println();
         if(idx < 0) { let idx = 0; }
         if(idx > 30) { let idx = 30; }
-        let ax = AX[idx];
-        let ay = AY[idx];
+        let ax = ax - AX[idx];
+        let ay = ay - AY[idx];
         return;
     }
     method void updateSpeed() { // update velocity
-        // var int idx;
         let vx = vx + ax;
         let vy = vy + ay;
         return;
     }
     method void move() {
-        do updateRate();
         do updateSpeed();
         if(x + vx - size > -1) {
             if(x + vx + size < 512) {
@@ -220,6 +203,11 @@ class Circle {
         }
         if(y + vy - size < -1) { let y = size; }
         if(y + vy + size > 256) { let y = 255-size; }
+        return;
+    }
+    method void resetRate() {
+        let ax = oax;
+        let ay = oay;
         return;
     }
 }
