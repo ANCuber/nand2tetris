@@ -3,10 +3,10 @@
  iy must be over 8
 */
 
-class Rocket {
+class Rocket2 {
 	field int x, y;
 
-	constructor Rocket new (int ix, int iy) {
+	constructor Rocket2 new (int ix, int iy) {
 		let x = ix;
 		let y = iy;
 		return this;
@@ -18,7 +18,7 @@ class Rocket {
 		return;
 	}
 
-	method void drawRocket () {
+	method void drawRocket2 () {
 		//mid
 		do Screen.drawPixel(0 + x, -8 + y);
 		do Screen.drawLine(-4 + x, -4 + y, 4 + x, -4 + y);
