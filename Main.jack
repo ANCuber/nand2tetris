@@ -1,10 +1,9 @@
 class Main {
 	function void main () {
-		var Rocket rocket;
+		var Rocket2 rocket;
 
-		let rocket = Rocket.new(10, 10);
-
-		do rocket.drawRocket();
+		let rocket = Rocket2.new(100, 100);
+		do rocket.drawRocket2();
 		return;
 	}
 }
