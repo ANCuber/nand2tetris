@@ -1,0 +1,21 @@
+function Main.main 1
+push constant 200
+push constant 50
+push constant 7
+push constant 5
+push constant 10
+push constant 20
+neg
+push constant 7
+neg
+push constant 90
+call CircleGame.new 8
+pop local 0
+push local 0
+call CircleGame.run 1
+pop temp 0
+push local 0
+call CircleGame.dispose 1
+pop temp 0
+push constant 0
+return

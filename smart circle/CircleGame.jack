@@ -1,0 +1,32 @@
+class CircleGame {
+    field Circle circle;
+    constructor CircleGame new(int sx, int sy, int ssize, int sax, int say, int svx, int svy, int sangle) {
+        let circle = Circle.new(sx, sy, ssize, sax, say, svx, svy, sangle);
+        return this;
+    }
+    method void run() {
+        var boolean exit;
+        var int key;
+        let exit = false;
+        do circle.draw();
+        while (~exit) {
+            do circle.printInfo();
+            // do circle.draw();
+            let key = Keyboard.keyPressed();
+            if(~(key = 0)) {
+                if(key = 130) { do circle.decAngle(); }
+                if(key = 132) { do circle.incAngle(); }
+            }
+            if(key = 140) {
+                let exit = true;
+            }
+            do circle.move();
+        }
+        return;
+    }
+    method void dispose() {
+        do circle.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}

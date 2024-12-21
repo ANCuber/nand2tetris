@@ -1,10 +1,22 @@
 class Main {
-	function void main () {
-		var Rocket rocket;
+    function void main() {
+        var int i, tmp, q;
 
-		let rocket = Rocket.new(10, 10);
+        do Screen.clearScreen();
+        do Random.set_seed(13257);
 
-		do rocket.drawRocket();
-		return;
-	}
+        do Terrain.Init(151, 10, 50);// 151, 10, 50
+
+        while(1 = 1) {
+            if (Keyboard.keyPressed() = 130) {// shift left
+                do Terrain.Shifting(-1);
+            }
+            if (Keyboard.keyPressed() = 132) {// shift right
+                do Terrain.Shifting(1);
+            }
+            do Sys.wait(200);
+        }
+
+        return;
+    }
 }

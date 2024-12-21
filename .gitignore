@@ -1,0 +1,16 @@
+#ignore all files
+*
+
+#unignore all with extensions and all dirs
+!*.* 
+!*/
+
+*.zip
+test.*
+test
+test/
+.DS_Store
+tools/
+projects/
+nand2tetris_HW/
+
