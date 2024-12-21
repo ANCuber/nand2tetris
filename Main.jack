@@ -1,8 +1,3 @@
-
-/*
- For testing.
-*/
-
 class Main {
     function void main() {
         var int i, tmp, q;
