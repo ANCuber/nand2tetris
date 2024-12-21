@@ -19,9 +19,10 @@ class Main {
             }
             if (Keyboard.keyPressed() = 132) {// shift right
                 do Terrain.Shifting(1);
-                let tmp = Terrain.checkCollision(400, 200, 5);
+            }
+            let tmp = Terrain.checkCollision(400, 200, 5);
+            if (~(tmp = 0)) {
                 do Output.printInt(tmp);
-                do Output.printString(" ");
             }
             //do Sys.wait(200);
         }

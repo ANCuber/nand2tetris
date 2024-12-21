@@ -87,15 +87,18 @@ class Terrain {
             // relative
             let x2 = tmp.get_end_x()-tmp.get_str_x();
             let y2 = tmp.get_end_y()-tmp.get_str_y();
-
             let cx = x0-tmp.get_str_x();
             let cy = y0-tmp.get_str_y();
             
             // chech whether within the curret segment
-            if ((-rng < cx) & (cx < (x2+rng)) & (-rng < cy) & (cy < (y2+rng))) {
+            if ((-rng < cx) & (cx < (x2+rng)) & (((-rng < cy) & (cy < (y2+rng))) | ((rng > cy) & (cy > (y2-rng)))) ) {
                 // dis(A, L) = |a*x0+b*y0+c|/sqrt(a^2+b^2)
                 let abs = (x2*cy)-(y2*cx);
-                let sqr = x2*x2+y2*y2;
+                let sqr = (x2*x2)+(y2*y2);
+
+                if (abs < 0) {
+                    let abs = -abs;
+                }
 
                 // collision happens
                 if ((tmp.get_type() = 1) & ((abs*abs) < (sqr*rng*rng))) {

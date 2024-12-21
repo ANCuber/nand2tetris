@@ -222,12 +222,22 @@ label Terrain_12
     neg
     push local 6
     lt
-    and
     push local 6
     push local 4
     push argument 2
     add
     lt
+    and
+    push argument 2
+    push local 6
+    gt
+    push local 6
+    push local 4
+    push argument 2
+    sub
+    gt
+    and
+    or
     and
     not
     if-goto Terrain_15
@@ -243,10 +253,21 @@ label Terrain_12
     push local 3
     call Math.multiply 2
     push local 4
-    add
     push local 4
     call Math.multiply 2
+    add
     pop local 8
+    push local 7
+    push constant 0
+    lt
+    not
+    if-goto Terrain_17
+    push local 7
+    neg
+    pop local 7
+    goto Terrain_16
+label Terrain_17
+label Terrain_16
     push local 9
     call Ground.get_type 1
     push constant 1
@@ -262,13 +283,13 @@ label Terrain_12
     lt
     and
     not
-    if-goto Terrain_17
+    if-goto Terrain_19
     push constant 1
     neg
     return
-    goto Terrain_16
-label Terrain_17
-label Terrain_16
+    goto Terrain_18
+label Terrain_19
+label Terrain_18
     push local 9
     call Ground.get_type 1
     push constant 0
@@ -284,12 +305,12 @@ label Terrain_16
     lt
     and
     not
-    if-goto Terrain_19
+    if-goto Terrain_21
     push constant 1
     return
-    goto Terrain_18
-label Terrain_19
-label Terrain_18
+    goto Terrain_20
+label Terrain_21
+label Terrain_20
     goto Terrain_14
 label Terrain_15
 label Terrain_14
