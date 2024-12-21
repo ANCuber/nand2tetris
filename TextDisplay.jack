@@ -1,0 +1,65 @@
+class TextDisplay{
+	function void start_screen(){
+		do Output.moveCursor(8,25);
+		do Output.printString("INSERT COINS");
+		do Output.println();
+		do Output.moveCursor(11,20);
+		do Output.printString("PRESS ANY KEY TO PLAY");
+		do Output.println();
+		do Output.moveCursor(13,22);
+		do Output.printString("ARROW KEY TO MOVE");
+		return;
+	}
+	function void fail_screen(int s){
+		var int t;
+		do Output.moveCursor(8,25);
+		do Output.printString("GAME OVER");
+		do Output.println();
+		do Random.set_seed(s);
+		let t = Math.divide(Random.get_num(),10000);
+		if (t=0){
+			do Output.moveCursor(11,22);
+			do Output.printString("NASA IS NOT MAD");
+		}
+		if ( t = 1 ){
+			do Output.moveCursor(11,21);
+			do Output.printString("SHOOT FOR THE MOON");
+		}
+		if( t = 2 ){
+			do Output.moveCursor(11,23);
+			do Output.printString("FAILURE DETECTED");
+		}
+		if( t > 2 ){
+			do Output.moveCursor(11,18);
+			do Output.printString("LANDING ATTEMPT GRADE: C");
+		}
+		do Output.println();
+		if(t = 0){
+			do Output.moveCursor(13,18);
+			do Output.printString("THEY ARE JUST DISAPPOINTED");
+		}
+		if(t=1){
+			do Output.moveCursor(13,18);
+			do Output.printString("YOU LAND AMONGS THE STAR");
+		}
+		if(t=2){
+			do Output.moveCursor(13,20);
+			do Output.printString("HUMAN SURE CRASH ALOT");
+		}
+		if(t >2) {
+			do Output.moveCursor(13,20);
+			do Output.printString("TRY BETTER NEXT TIME");
+		}	
+		return;
+	}
+	function void successful_screen(int score){
+		do Output.moveCursor(8,25);
+		do Output.printString("CONGRATE");
+		do Output.moveCursor(11,20);
+		do Output.printString("LANDED SUCCESSFULLY");
+		do Output.moveCursor(13,20);
+		do Output.printString("SCORE:");
+		do Output.printInt(score);
+		return;
+	}
+}

@@ -1,0 +1,9 @@
+class Main {
+    function void main() {
+
+        do Screen.clearScreen();
+		do TextDisplay.successful_screen(200);
+
+        return;
+    }
+}
