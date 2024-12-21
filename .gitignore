@@ -1,1 +1,14 @@
+
+*
+!*.* 
+!*/
+
+*.zip
+test.*
+test
+test/
+.DS_Store
+tools/
+projects/
+nand2tetris_HW/
 *.vm
