@@ -88,9 +88,11 @@ class Ground {
     method int get_str_y() {
         return y1;
     }
-
     method int get_dir() {
         return dir;
+    }
+    method int get_type() {
+        return type;
     }
 
     // setters

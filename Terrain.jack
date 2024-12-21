@@ -4,6 +4,7 @@
  ----
  Always call Init(N,len,mxh) first to set a Terrain of N grounds, with length of len and maximal slope of mxh.
  Call Shifting(dS) to modify positions of the entire Terrain.
+ Call checkCollision(cx, cy, rng) to check collisions (dis < rng).
 */
 
 class Terrain {
@@ -67,5 +68,42 @@ class Terrain {
         }
 
         return;
+    }
+
+    function int checkCollision(int cx, int cy, int rng) {// return 0 if no collision, 1 if colliding with horizontal grounds, -1 with slopes.
+        var int i, x1, y1, x2, y2;
+        var int abs;
+        var int sqr;
+        var Ground tmp;
+
+        let i = 0;
+        while(i < Nums) {
+            let tmp = arr[i];
+
+            let x1 = tmp.get_str_x();
+            let x2 = tmp.get_end_x();
+            let y1 = tmp.get_str_y();
+            let y2 = tmp.get_end_y();
+            
+            // chech whether within the curret segment
+            if ( ((((x2-x1)*(cx-x1))+((y2-y1)*(cy-y1))) > -1) & ((((x1-x2)*(cx-x2))+((y1-y2)*(cy-y2))) > -1)) {
+                // dis(A, L) = |a*x0+b*y0+c|/sqrt(a^2+b^2)
+                let abs = ((x1-x2)*cy)+((y2-y1)*cx)-(y1*(x1-x2))-(x1*(y2-y1));
+                let sqr = ((x1-x2)*(x1-x2))+((y2-y1)*(y2-y1));
+
+                // collision happens
+                if ((tmp.get_type() = 1) & (abs*abs < sqr*rng)) {
+                    return -1;
+                }
+                if ((tmp.get_type() = 0) & (abs*abs < sqr*rng)) {
+                    return 1;
+                }
+            }
+
+            let i = i+1;
+        }
+        
+        // no collision
+        return 0;
     }
 }
