@@ -2,7 +2,7 @@ class Main {
     function void main() {
 
         do Screen.clearScreen();
-		do TextDisplay.fail_screen(30);
+		do TextDisplay.successful_screen(200);
 
         return;
     }

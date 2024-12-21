@@ -31,22 +31,35 @@ class TextDisplay{
 		}
 		if( t > 2 ){
 			do Output.moveCursor(11,18);
-			do Output.printString("Landing Attempt Grade: C");
+			do Output.printString("LANDING ATTEMPT GRADE: C");
 		}
 		do Output.println();
-		do Output.moveCursor(13,22);
 		if(t = 0){
+			do Output.moveCursor(13,18);
 			do Output.printString("THEY ARE JUST DISAPPOINTED");
 		}
 		if(t=1){
+			do Output.moveCursor(13,18);
 			do Output.printString("YOU LAND AMONGS THE STAR");
 		}
 		if(t=2){
+			do Output.moveCursor(13,20);
 			do Output.printString("HUMAN SURE CRASH ALOT");
 		}
 		if(t >2) {
+			do Output.moveCursor(13,20);
 			do Output.printString("TRY BETTER NEXT TIME");
 		}	
+		return;
+	}
+	function void successful_screen(int score){
+		do Output.moveCursor(8,25);
+		do Output.printString("CONGRATE");
+		do Output.moveCursor(11,20);
+		do Output.printString("LANDED SUCCESSFULLY");
+		do Output.moveCursor(13,20);
+		do Output.printString("SCORE:");
+		do Output.printInt(score);
 		return;
 	}
 }
