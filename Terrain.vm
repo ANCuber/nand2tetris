@@ -167,7 +167,11 @@ label Terrain_10
 label Terrain_7
     push constant 0
     return
-function Terrain.checkCollision 8
+function Terrain.checkCollision 10
+    push constant 0
+    pop local 1
+    push constant 0
+    pop local 2
     push constant 0
     pop local 0
 label Terrain_12
@@ -181,109 +185,81 @@ label Terrain_12
     add
     pop pointer 1
     push that 0
-    pop local 7
-    push local 7
-    call Ground.get_str_x 1
-    pop local 1
-    push local 7
+    pop local 9
+    push local 9
     call Ground.get_end_x 1
+    push local 9
+    call Ground.get_str_x 1
+    sub
     pop local 3
-    push local 7
-    call Ground.get_str_y 1
-    pop local 2
-    push local 7
+    push local 9
     call Ground.get_end_y 1
+    push local 9
+    call Ground.get_str_y 1
+    sub
     pop local 4
-    push local 3
-    push local 1
-    sub
     push argument 0
-    push local 1
+    push local 9
+    call Ground.get_str_x 1
     sub
-    call Math.multiply 2
-    push local 4
-    push local 2
-    sub
+    pop local 5
     push argument 1
-    push local 2
+    push local 9
+    call Ground.get_str_y 1
     sub
-    call Math.multiply 2
-    add
-    push constant 1
+    pop local 6
+    push argument 2
     neg
-    gt
-    push local 1
+    push local 5
+    lt
+    push local 5
     push local 3
-    sub
-    push argument 0
-    push local 3
-    sub
-    call Math.multiply 2
-    push local 2
-    push local 4
-    sub
-    push argument 1
-    push local 4
-    sub
-    call Math.multiply 2
+    push argument 2
     add
-    push constant 1
+    lt
+    and
+    push argument 2
     neg
-    gt
+    push local 6
+    lt
+    and
+    push local 6
+    push local 4
+    push argument 2
+    add
+    lt
     and
     not
     if-goto Terrain_15
-    push local 1
     push local 3
-    sub
-    push argument 1
+    push local 6
     call Math.multiply 2
     push local 4
-    push local 2
-    sub
-    push argument 0
+    push local 5
     call Math.multiply 2
+    sub
+    pop local 7
+    push local 3
+    push local 3
+    call Math.multiply 2
+    push local 4
     add
-    push local 2
-    push local 1
-    push local 3
-    sub
-    call Math.multiply 2
-    sub
-    push local 1
     push local 4
-    push local 2
-    sub
     call Math.multiply 2
-    sub
-    pop local 5
-    push local 1
-    push local 3
-    sub
-    push local 1
-    push local 3
-    sub
-    call Math.multiply 2
-    push local 4
-    push local 2
-    sub
-    push local 4
-    push local 2
-    sub
-    call Math.multiply 2
-    add
-    pop local 6
-    push local 7
+    pop local 8
+    push local 9
     call Ground.get_type 1
     push constant 1
     eq
-    push local 5
-    push local 5
+    push local 7
+    push local 7
     call Math.multiply 2
-    push local 6
-    lt
+    push local 8
     push argument 2
     call Math.multiply 2
+    push argument 2
+    call Math.multiply 2
+    lt
     and
     not
     if-goto Terrain_17
@@ -293,17 +269,19 @@ label Terrain_12
     goto Terrain_16
 label Terrain_17
 label Terrain_16
-    push local 7
+    push local 9
     call Ground.get_type 1
     push constant 0
     eq
-    push local 5
-    push local 5
+    push local 7
+    push local 7
     call Math.multiply 2
-    push local 6
-    lt
+    push local 8
     push argument 2
     call Math.multiply 2
+    push argument 2
+    call Math.multiply 2
+    lt
     and
     not
     if-goto Terrain_19
