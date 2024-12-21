@@ -10,11 +10,11 @@ class CircleGame {
         let exit = false;
         do circle.draw();
         while (~exit) {
-            do circle.printInfo();
+            // do circle.printInfo();
             let key = Keyboard.keyPressed();
             if(~(key = 0)) {
-                if(key = 130) { do circle.decAngle(); }
-                if(key = 132) { do circle.incAngle(); }
+                if(key = 130) { do circle.changeAngle(false); }
+                if(key = 132) { do circle.changeAngle(true); }
                 if(key = 131) { do circle.updateRate(); }
             }
             if(key = 140) {
@@ -22,6 +22,9 @@ class CircleGame {
             }
             do circle.move();
             if(~(key = 131)) { do circle.resetRate(); }
+            do circle.draw();
+            do Sys.wait(200);
+            do Screen.clearScreen();
         }
         return;
     }

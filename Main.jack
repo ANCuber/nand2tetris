@@ -1,7 +1,7 @@
 class Main {
     function void main() {
         var CircleGame game;
-        let game = CircleGame.new(50, 60, 4, 3, 2, 20, 35, 90);
+        let game = CircleGame.new(50, 60, 4, 3, 2, 5, 6, 50);
         // x, y, size, ax, ay, vx, vy, angle
         do game.run();
         do game.dispose();

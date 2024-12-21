@@ -3,7 +3,7 @@ class Circle {
     field int oax, oay; // original acceleration
     field int ax, ay; // acceleration
     field int vx, vy; // velocity
-    field int angle;
+    field int angle, fuel;
     field Array AX;
     field Array AY;
     constructor Circle new(int sx, int sy, int ssize, int sax, int say, int svx, int svy, int sangle) {
@@ -17,6 +17,7 @@ class Circle {
         let vx = svx;
         let vy = svy;
         let angle = sangle;
+        let fuel = 300;
         let AX = Array.new(31);
         let AY = Array.new(31);
         let AX[0] = -3;
@@ -136,18 +137,27 @@ class Circle {
         }
         return;
     }
-    method void incAngle() {
-        if (angle < 175) {
+    method void changeAngle(boolean dir) {
+        if((dir) & (angle < 175)) {
             let angle = angle + 6;
         }
-        return;
-    }
-    method void decAngle() {
-        if (angle > 5) {
+        if((~dir) & (angle > 5)) {
             let angle = angle - 6;
         }
         return;
     }
+    // method void incAngle() {
+    //     if (angle < 175) {
+    //         let angle = angle + 6;
+    //     }
+    //     return;
+    // }
+    // method void decAngle() {
+    //     if (angle > 5) {
+    //         let angle = angle - 6;
+    //     }
+    //     return;
+    // }
     method void printInfo() {
         do Screen.clearScreen();
         do draw();
