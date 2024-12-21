@@ -1,40 +1,40 @@
 function Random.xor 0
-push argument 0
-not
-push argument 1
-and
-push argument 0
-push argument 1
-not
-and
-or
-return
+    push argument 0
+    not
+    push argument 1
+    and
+    push argument 0
+    push argument 1
+    not
+    and
+    or
+    return
 function Random.hash16 1
-push argument 0
-push argument 1
-call Math.multiply 2
-pop local 0
-push local 0
-push constant 256
-call Math.divide 2
-push local 0
-call Random.xor 2
-push constant 32767
-and
-return
+    push argument 0
+    push argument 1
+    call Math.multiply 2
+    pop local 0
+    push local 0
+    push constant 256
+    call Math.divide 2
+    push local 0
+    call Random.xor 2
+    push constant 32767
+    and
+    return
 function Random.set_seed 0
-push argument 0
-pop static 0
-push constant 0
-return
+    push argument 0
+    pop static 0
+    push constant 0
+    return
 function Random.get_num 0
-push static 0
-push constant 31765
-add
-pop static 0
-push static 0
-push constant 683
-call Random.hash16 2
-pop static 0
-push static 0
-return
+    push static 0
+    push constant 31765
+    add
+    pop static 0
+    push static 0
+    push constant 683
+    call Random.hash16 2
+    pop static 0
+    push static 0
+    return

@@ -1,0 +1,71 @@
+/*
+ Terrain
+ Treat terrain as a class, not an object
+ ----
+ Always call Init(N,len,mxh) first to set a Terrain of N grounds, with length of len and maximal slope of mxh.
+ Call Shifting(dS) to modify positions of the entire Terrain.
+*/
+
+class Terrain {
+    static int Nums;
+    static Array arr;
+
+    function void Init(int N, int len, int mxh) { // initialize N grounds, with length of len and maximal slope of mxh
+        var int i;
+        var int rand;
+        var int xb, yb, pdH;
+        var Ground tmp;
+
+        let Nums = N;
+        let arr = Array.new(Nums+5);
+        
+        do Ground.Init(len, mxh);
+        
+        // initializing
+        let arr[0] = Ground.new(-250,254,1);// default going up for the first Ground
+        let i = 1;
+        while (i < Nums) { // 1 to N-1
+            let tmp = arr[i-1];
+            let xb = tmp.get_end_x();
+            let yb = tmp.get_end_y();
+            let pdH = tmp.get_dir();
+            let arr[i] = Ground.new(xb,yb,pdH);
+
+            let i = i+1;
+        }
+
+        // drawing
+        let i = 0;
+        while (i < Nums) {
+            let tmp = arr[i];
+            if ((tmp.get_str_x()>0) & (tmp.get_end_x()<511)) {
+                do tmp.DrawOrClear(1);
+            }
+
+            let i = i+1;
+        }
+        
+        return;
+    }
+    
+    function void Shifting(int dS) { // shift +dS along x axis
+        var int i;
+        var Ground tmp;
+        
+        let i = 0;
+        while(i < Nums) {
+            let tmp = arr[i];
+            if ((tmp.get_str_x()>0) & (tmp.get_end_x()<511)) {
+                do tmp.DrawOrClear(0);// clear
+            }
+            do tmp.upd_xs(dS);// update
+            if ((tmp.get_str_x()>0) & (tmp.get_end_x()<511)) {
+                do tmp.DrawOrClear(1);// draw
+            }
+            
+            let i = i+1;
+        }
+
+        return;
+    }
+}
