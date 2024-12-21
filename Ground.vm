@@ -143,6 +143,11 @@ function Ground.get_dir 0
     pop pointer 0
     push this 5
     return
+function Ground.get_type 0
+    push argument 0
+    pop pointer 0
+    push this 4
+    return
 function Ground.upd_xs 0
     push argument 0
     pop pointer 0
