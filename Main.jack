@@ -7,7 +7,7 @@ class Main {
         var int i, tmp;
 
         do Screen.clearScreen();
-        do Random.set_seed(13257);
+        do Random.set_seed(137);// 13257
 
         do Terrain.Init(151, 10, 50);// 151, 10, 50
         

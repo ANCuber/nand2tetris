@@ -1,7 +1,7 @@
 function Main.main 2
     call Screen.clearScreen 0
     pop temp 0
-    push constant 13257
+    push constant 137
     call Random.set_seed 1
     pop temp 0
     push constant 151

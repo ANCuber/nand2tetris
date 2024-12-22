@@ -44,25 +44,35 @@ function Ground.new 2
     call Math.multiply 2
     sub
     pop local 0
+    push this 1
+    push constant 150
+    lt
+    not
+    if-goto Ground_3
+    push constant 3
+    pop local 0
+    goto Ground_2
+label Ground_3
+label Ground_2
     push argument 0
     push static 0
     add
     pop this 2
     push local 0
     push constant 2
-    lt
     push argument 2
     add
+    lt
     not
-    if-goto Ground_3
+    if-goto Ground_5
     push this 1
     push local 1
     sub
     pop this 3
     push constant 1
     pop this 5
-    goto Ground_2
-label Ground_3
+    goto Ground_4
+label Ground_5
     push this 1
     push local 1
     add
@@ -70,16 +80,6 @@ label Ground_3
     push constant 1
     neg
     pop this 5
-label Ground_2
-    push this 3
-    push constant 1
-    lt
-    not
-    if-goto Ground_5
-    push constant 1
-    pop this 3
-    goto Ground_4
-label Ground_5
 label Ground_4
     push this 3
     push constant 254
