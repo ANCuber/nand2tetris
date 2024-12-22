@@ -1,0 +1,20 @@
+class Random{
+	static int seed;
+	function int xor(int a,int b){
+		return ((~a & b) | (a & ~b));
+	}
+	function int hash16(int input, int key) {
+  		var int hash;
+		let hash = input * key;
+  		return ((Random.xor( Math.divide(hash,256) , hash)) & 32767);
+	}
+	function void set_seed(int k){
+		let seed = k;
+		return;
+	}
+	function int get_num(){
+		let seed = seed + 31765;
+		let seed = Random.hash16(seed,683);
+		return seed;
+	}
+}

@@ -1,0 +1,223 @@
+class Circle {
+    field int x, y, size; // center of mass
+    field int oax, oay; // original acceleration
+    field int ax, ay; // acceleration
+    field int vx, vy; // velocity
+    field int angle, fuel;
+    field Array AX;
+    field Array AY;
+    constructor Circle new(int sx, int sy, int ssize, int sax, int say, int svx, int svy, int sangle) {
+        let x = sx;
+        let y = sy;
+        let size = ssize;
+        let ax = sax;
+        let ay = say;
+        let oax = sax;
+        let oay = say;
+        let vx = svx;
+        let vy = svy;
+        let angle = sangle;
+        let fuel = 300;
+        let AX = Array.new(31);
+        let AY = Array.new(31);
+        let AX[0] = -3;
+        let AX[1] = -2;
+        let AX[2] = -2;
+        let AX[3] = -2;
+        let AX[4] = -2;
+        let AX[5] = -2;
+        let AX[6] = -2;
+        let AX[7] = -2;
+        let AX[8] = -2;
+        let AX[9] = -1;
+        let AX[10] = -1;
+        let AX[11] = -1;
+        let AX[12] = 0;
+        let AX[13] = 0;
+        let AX[14] = 0;
+        let AX[15] = 0;
+        let AX[16] = 0;
+        let AX[17] = 0;
+        let AX[18] = 0;
+        let AX[19] = 1;
+        let AX[20] = 1;
+        let AX[21] = 1;
+        let AX[22] = 2;
+        let AX[23] = 2;
+        let AX[24] = 2;
+        let AX[25] = 2;
+        let AX[26] = 2;
+        let AX[27] = 2;
+        let AX[28] = 2;
+        let AX[29] = 2;
+        let AX[30] = 3;
+        let AY[0] = 0;
+        let AY[1] = 0;
+        let AY[2] = 0;
+        let AY[3] = 0;
+        let AY[4] = 1;
+        let AY[5] = 1;
+        let AY[6] = 1;
+        let AY[7] = 2;
+        let AY[8] = 2;
+        let AY[9] = 2;
+        let AY[10] = 2;
+        let AY[11] = 2;
+        let AY[12] = 2;
+        let AY[13] = 2;
+        let AY[14] = 2;
+        let AY[15] = 3;
+        let AY[16] = 2;
+        let AY[17] = 2;
+        let AY[18] = 2;
+        let AY[19] = 2;
+        let AY[20] = 2;
+        let AY[21] = 2;
+        let AY[22] = 2;
+        let AY[23] = 2;
+        let AY[24] = 1;
+        let AY[25] = 1;
+        let AY[26] = 1;
+        let AY[27] = 0;
+        let AY[28] = 0;
+        let AY[29] = 0;
+        let AY[30] = 0;
+        return this;
+    }
+    method int getx() { return x; }
+    method int gety() { return y; }
+    method int getAngle() { return angle; }
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawCircle(x, y, size);
+        return;
+    }
+    method void erase() {
+        do Screen.setColor(false);
+        do Screen.drawCircle(x, y, size);
+        return;
+    }
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+    method void moveUp() {
+        if(y-2-size > -1) {
+            do erase();
+            let y = y-2;
+            do draw();
+            do Sys.wait(3);
+        }
+        return;
+    }
+    method void moveDown() {
+        if(y+2+size < 256) {
+            do erase();
+            let y = y+2;
+            do draw();
+            do Sys.wait(3);
+        }
+        return;
+    }
+    method void moveRight() {
+        if(x+2+size < 512) {
+            do erase();
+            let x = x+2;
+            do draw();
+            do Sys.wait(3);
+        }
+        return;
+    }
+    method void moveLeft() {
+        if(x-2-size > -1) {
+            do erase();
+            let x = x - 2;
+            do draw();
+            do Sys.wait(3);
+        }
+        return;
+    }
+    method void changeAngle(boolean dir) {
+        if((dir) & (angle < 175)) {
+            let angle = angle + 6;
+        }
+        if((~dir) & (angle > 5)) {
+            let angle = angle - 6;
+        }
+        return;
+    }
+    // method void incAngle() {
+    //     if (angle < 175) {
+    //         let angle = angle + 6;
+    //     }
+    //     return;
+    // }
+    // method void decAngle() {
+    //     if (angle > 5) {
+    //         let angle = angle - 6;
+    //     }
+    //     return;
+    // }
+    method void printInfo() {
+        do Screen.clearScreen();
+        do draw();
+        do Output.moveCursor(0, 0);
+        do Output.printString("angle: ");
+        do Output.printInt(angle);
+        do Output.println();
+        
+        do Output.printString("(vx, vy): ");
+        do Output.printString("(");
+        do Output.printInt(vx);
+        do Output.printString(", ");
+        do Output.printInt(vy);
+        do Output.printString(")");
+        do Output.println();
+
+        do Output.printString("(ax, ay): ");
+        do Output.printString("(");
+        do Output.printInt(ax);
+        do Output.printString(", ");
+        do Output.printInt(ay);
+        do Output.printString(")");
+        do Sys.wait(500);
+        return;
+    }
+    method void updateRate() { // update acceleration
+        var int idx;
+        let idx = (180-angle)/6;
+        if(idx < 0) { let idx = 0; }
+        if(idx > 30) { let idx = 30; }
+        let ax = ax - AX[idx];
+        let ay = ay - AY[idx];
+        return;
+    }
+    method void updateSpeed() { // update velocity
+        let vx = vx + ax;
+        let vy = vy + ay;
+        return;
+    }
+    method void move() {
+        do updateSpeed();
+        if(x + vx - size > -1) {
+            if(x + vx + size < 512) {
+                let x = x + vx;
+            }
+        }
+        if(x + vx - size < -1) { let x = size; }
+        if(x + vx + size > 511) { let x = 511-size; }
+        if(y + vy - size > -1) {
+            if(y + vy + size < 256) {
+                let y = y + vy;
+            }
+        }
+        if(y + vy - size < -1) { let y = size; }
+        if(y + vy + size > 256) { let y = 255-size; }
+        return;
+    }
+    method void resetRate() {
+        let ax = oax;
+        let ay = oay;
+        return;
+    }
+}
