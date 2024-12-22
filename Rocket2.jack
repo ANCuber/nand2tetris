@@ -88,7 +88,7 @@ class Rocket2 {
 			let sin[1] = 10 * cl_or_ccl;
 			let sin[2] = 20 * cl_or_ccl;
 			let sin[3] = 30 * cl_or_ccl;
-			let sin[4] = 40 * cl_or_cc;
+			let sin[4] = 40 * cl_or_ccl;
 			let sin[5] = 50 * cl_or_ccl;
 			let sin[6] = 58 * cl_or_ccl;
 			let sin[7] = 66 * cl_or_ccl;
