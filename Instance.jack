@@ -1,0 +1,86 @@
+class Instance {
+    field Rocket rocket;
+    field int vx, vy, ax, ay, angle, fuel;
+    constructor Instance new(int posx, int posy, int v_x, int v_y, int a_x, int a_y, int ang, int fu) {
+        let vx = v_x;
+        let vy = v_y;
+        let ax = a_x;
+        let ay = a_y;
+        let angle = ang;
+        let fuel = fu;
+        let rocket = Rocket.new(posx, posy);
+        return this;
+    }
+    method void updateVelocity() {
+        let vx = vx + ax;
+        let vx = (vx) - ((vx*vx)/100); // air resitence in x-axis
+        let vy = vy + ay;
+        let vy = (vy) - ((vy*vy)/60);// air resitence in y-axis
+        return;
+    }
+    method void draw(boolean color) {
+        do rocket.drawRocket(color);
+        return;
+    }
+    method void changePos(int ix, int iy) {
+        do rocket.updatePos(ix, iy);
+        return;
+    }
+    method void decAngle() {
+        do rocket.decreaseAngle();
+        if(angle > (-15)) { let angle = angle - 1; }
+        return;
+    }
+    method void incAngle() {
+        do rocket.increaseAngle();
+        if(angle < 15) { let angle = angle + 1; }
+        return;
+    }
+    method int getAngle() {
+        return angle;
+    }
+    method int getx() {
+        return rocket.getx();
+    }
+    method int gety() {
+        return rocket.gety();
+    }
+    method int getvx() {
+        return vx;
+    }
+    method int getvy() {
+        return vy;
+    }
+    method int getax() {
+        return ax;
+    }
+    method int getay() {
+        return ay;
+    }
+    method void updateRate(int ix, int iy) {
+        // update acceleration
+        let ax = ax + ix;
+        let ay = ay + iy;
+        return;
+    }
+    // display some information about draft
+    method void displayInfo() {
+        do Output.moveCursor(0, 0);
+        do Output.printString("Horizontal speed: ");
+        do Output.printInt(vx);
+        do Output.printString("        ");
+        do Output.println();
+        do Output.printString("Vertical speed: ");
+        do Output.printInt(vy);
+        do Output.printString("        ");
+        do Output.println();
+        do Output.printString("Horizontal acceleration: ");
+        do Output.printInt(ax);
+        do Output.printString("        ");
+        do Output.println();
+        do Output.printString("Vertical acceleration: ");
+        do Output.printInt(ay);
+        do Output.printString("        ");
+        return;
+    }
+}

@@ -1,0 +1,59 @@
+// The additional acceleration caused by up arrow keys
+class Data {
+    static Array AX, AY;
+    static int len;
+    // AX = [-2, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2]
+    // AY = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0]
+    function void Init() {
+        let len = 16;
+        let AX = Array.new(len);
+        let AY = Array.new(len);
+        // Assign values to AX
+        let AX[0] = -2;
+        let AX[1] = -1;
+        let AX[2] = -1;
+        let AX[3] = -1;
+        let AX[4] = -1;
+        let AX[5] = -1;
+        let AX[6] = 0;
+        let AX[7] = 0;
+        let AX[8] = 0;
+        let AX[9] = 0;
+        let AX[10] = 0;
+        let AX[11] = 1;
+        let AX[12] = 1;
+        let AX[13] = 1;
+        let AX[14] = 1;
+        let AX[15] = 2;
+
+        // Assign values to AY
+        let AY[0] = 0;
+        let AY[1] = 0;
+        let AY[2] = 0;
+        let AY[3] = 1;
+        let AY[4] = 1;
+        let AY[5] = 1;
+        let AY[6] = 1;
+        let AY[7] = 1;
+        let AY[8] = 1;
+        let AY[9] = 1;
+        let AY[10] = 1;
+        let AY[11] = 1;
+        let AY[12] = 1;
+        let AY[13] = 0;
+        let AY[14] = 0;
+        let AY[15] = 0;
+
+        return;
+    }
+    function int getdAX(int i) {
+        if(i > 15) { return AX[15]; }
+        if(i < 0) { return AX[0]; }
+        return AX[i];
+    }
+    function int getdAY(int i) {
+        if(i > 15) { return AY[15]; }
+        if(i < 0) { return AY[0]; }
+        return AY[i];
+    }
+}
