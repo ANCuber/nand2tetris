@@ -87,4 +87,8 @@ class Instance {
         do Screen.setColor(true);
         return;
     }
+    method void fire(boolean i) {
+        do rocket.fire(i);
+        return;
+    }
 }
