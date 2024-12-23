@@ -1,0 +1,344 @@
+function Ground.Init 0
+push argument 0
+pop static 0
+push argument 1
+pop static 1
+push constant 0
+return
+function Ground.new 0
+push constant 7
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+push constant 1
+add
+pop this 0
+push argument 1
+pop this 1
+call Random.get_num 0
+pop static 2
+push static 0
+push static 2
+push static 0
+push constant 1
+call Math.multiply 2
+push static 2
+push static 0
+push constant 1
+call Math.multiply 2
+call Math.divide 2
+call Math.multiply 2
+sub
+add
+pop this 4
+push argument 0
+push this 4
+add
+pop this 2
+call Random.get_num 0
+pop static 2
+push static 2
+push constant 2000
+gt
+push argument 2
+push constant 0
+eq
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+pop this 5
+call Random.get_num 0
+pop static 2
+push constant 1
+push static 2
+add
+push static 1
+push static 2
+push static 1
+call Math.divide 2
+call Math.multiply 2
+sub
+pop static 3
+push static 3
+push constant 12
+call Math.divide 2
+push constant 1
+add
+push constant 12
+call Math.multiply 2
+pop static 3
+call Random.get_num 0
+pop static 2
+push static 2
+push constant 4
+push static 2
+push constant 4
+call Math.divide 2
+call Math.multiply 2
+sub
+pop static 2
+push this 1
+push constant 150
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 3
+pop static 2
+label IF_FALSE1
+push static 2
+push constant 2
+push argument 2
+add
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 1
+push static 3
+sub
+pop this 3
+push constant 1
+pop this 6
+goto IF_END2
+label IF_FALSE2
+push this 1
+push static 3
+add
+pop this 3
+push constant 1
+neg
+pop this 6
+label IF_END2
+push this 3
+push constant 239
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 1
+push constant 239
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push argument 2
+push constant 0
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 3
+push static 3
+sub
+push static 3
+sub
+pop this 3
+goto IF_END5
+label IF_FALSE5
+push constant 239
+pop this 3
+label IF_END5
+goto IF_END4
+label IF_FALSE4
+push constant 239
+pop this 3
+label IF_END4
+label IF_FALSE3
+push this 3
+push this 1
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push constant 0
+pop this 5
+push constant 0
+pop this 6
+label IF_FALSE6
+goto IF_END0
+label IF_FALSE0
+push constant 0
+pop this 5
+push this 1
+pop this 3
+push constant 0
+pop this 6
+label IF_END0
+push pointer 0
+return
+function Ground.get_end_x 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Ground.get_end_y 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function Ground.get_str_x 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Ground.get_str_y 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Ground.get_dir 0
+push argument 0
+pop pointer 0
+push this 6
+return
+function Ground.get_type 0
+push argument 0
+pop pointer 0
+push this 5
+return
+function Ground.upd_xs 0
+push argument 0
+pop pointer 0
+push this 0
+push argument 1
+add
+pop this 0
+push this 2
+push argument 1
+add
+pop this 2
+push constant 0
+return
+function Ground.DrawOrClear 0
+push argument 0
+pop pointer 0
+push this 1
+pop static 4
+push this 3
+push this 1
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 3
+pop static 4
+label IF_FALSE0
+push this 5
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 2
+push constant 30
+add
+pop static 5
+push static 4
+push constant 30
+add
+pop static 6
+push this 0
+pop static 7
+push static 5
+push constant 511
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 511
+pop static 5
+label IF_FALSE2
+push static 6
+push constant 255
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 255
+pop static 6
+label IF_FALSE3
+push static 7
+push constant 0
+lt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 0
+pop static 7
+label IF_FALSE4
+push static 7
+push static 4
+push static 5
+push static 6
+call Screen.drawRectangle 4
+pop temp 0
+label IF_FALSE1
+push this 0
+push constant 0
+lt
+push this 2
+push constant 511
+gt
+and
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+return
+label IF_FALSE5
+push argument 1
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 2
+push this 3
+call Screen.drawLine 4
+pop temp 0
+push this 5
+push constant 0
+eq
+push argument 1
+and
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push constant 240
+push this 1
+sub
+push constant 25
+call Math.divide 2
+push constant 1
+add
+pop static 2
+push constant 11
+push this 1
+add
+push constant 12
+call Math.divide 2
+push constant 2
+add
+push this 0
+push constant 1
+add
+push constant 8
+call Math.divide 2
+push constant 1
+add
+call Output.moveCursor 2
+pop temp 0
+push static 2
+call Output.printInt 1
+pop temp 0
+push constant 120
+call Output.printChar 1
+pop temp 0
+label IF_FALSE6
+push constant 0
+return

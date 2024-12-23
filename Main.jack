@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+/*
+ For testing.
+*/
+
+class Main {
+    function void main() {
+        var int i, tmp;
+
+        do Screen.clearScreen();
+        do Random.set_seed(137);// 13257
+
+        do Terrain.Init(151, 10, 50);// 151, 10, 50
+        
+        while(1 = 1) {
+            do Screen.drawCircle(400,200,5);
+            if (Keyboard.keyPressed() = 130) {// shift left
+                do Terrain.Shifting(-1);
+=======
 class Main {
     function void main() {
         // var CircleGame game;
@@ -22,10 +41,20 @@ class Main {
             do craft.draw(false);
             if(key = 130) { // press left
                 do craft.decAngle();
+>>>>>>> main
             }
             if(key = 132) { // press right
                 do craft.incAngle();
             }
+<<<<<<< HEAD
+            /*
+            let tmp = Terrain.checkCollision(400, 200, 5);
+            if (~(tmp = 0)) {
+                do Output.printInt(tmp);
+            }
+            */
+            //do Sys.wait(200);
+=======
             if(key = 131) { // press up
                 let dAX = Data.getdAX(craft.getAngle()+15);
                 let dAY = Data.getdAY(craft.getAngle()+15);
@@ -39,6 +68,7 @@ class Main {
             do craft.draw(true);
             do Sys.wait(100);
             // do craft.hideInfo();s
+>>>>>>> main
         }
         return;
     }
