@@ -73,6 +73,28 @@ class Terrain {
         return;
     }
 
+	function void ShiftingY(int dS) { // shift +dS along y axis
+        let i = 0;
+        while(i < Nums) {
+            let tmp = arr[i];
+            if ((tmp.get_str_y()>0) & (tmp.get_end_y()<255)) {
+                do tmp.DrawOrClear(0);// clear
+            }
+            do tmp.upd_ys(dS);// update
+            if ((tmp.get_str_y()>0) & (tmp.get_end_y()<255)) {
+                do tmp.DrawOrClear(1);// draw
+            }
+            
+            let i = i+1;
+        }
+        
+        do Screen.setColor(0);
+        do Screen.drawRectangle(0,0,10,255);
+        do Screen.drawRectangle(501,0,511,255);
+
+        return;
+    }
+
     function int checkCollision(int x0, int y0, int rng) {// return 0 if no collision, 1 if colliding with horizontal grounds, -1 with slopes.
         let x1 = 0;
         let y1 = 0;
@@ -87,21 +109,21 @@ class Terrain {
             let cy = y0-tmp.get_str_y();
             
             // chech whether within the curret segment
-            if ((-rng < cx) & (cx < (x2+rng)) & (((-rng < cy) & (cy < (y2+rng))) | ((rng > cy) & (cy > (y2-rng)))) ) {
+            if ((-rng-2 < cx) & (cx < (x2+rng+2)) & (((-rng-2 < cy) & (cy < (y2+rng+2))) | ((rng+2 > cy) & (cy > (y2-rng-2)))) ) {
                 // dis(A, L) = |a*x0+b*y0+c|/sqrt(a^2+b^2)
                 let abs = (x2*cy)-(y2*cx);
-                let sqr = (x2*x2)+(y2*y2);
+                let sqr = Math.sqrt((x2*x2)+(y2*y2));
 
                 if (abs < 0) {
                     let abs = -abs;
                 }
 
                 // collision happens
-                if ((tmp.get_type() = 1) & ((abs*abs) < (sqr*rng*rng))) {
+                if ((tmp.get_type() = 1) & ((abs) < (sqr*rng))) {
                     return -1;
                 }
-                if ((tmp.get_type() = 0) & ((abs*abs) < (sqr*rng*rng))) {
-                    return 1;
+                if ((tmp.get_type() = 0) & ((abs) < (sqr*rng))) {
+                    return tmp.get_score();
                 }
             }
 

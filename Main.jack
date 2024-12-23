@@ -14,8 +14,8 @@ class Main {
         do Data.Init();
         while(Terrain.checkCollision((craft.getx()), (craft.gety()), 7) = 0) {
             let burn = false;
-            let key = Keyboard.keyPressed();
             do craft.draw(false);
+            let key = Keyboard.keyPressed();
             if(key = 130) { // press left
                 do craft.decAngle();
             }
@@ -38,9 +38,12 @@ class Main {
 				do Terrain.Shifting(412-craft.getx());
             	do craft.changePos(412, craft.gety());
 			}
+			if(craft.gety()<10){
+            	do craft.changePos(craft.getx(), 10);
+			}
             if(burn) { do craft.updateRate(-dAX, -dAY); }
             do craft.draw(true);
-            do Sys.wait(100);
+            do Sys.wait(200);
         }
         return;
     }

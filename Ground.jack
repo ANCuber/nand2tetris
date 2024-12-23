@@ -18,6 +18,7 @@ class Ground {
     field int len; // length
     field int type; // 1 for slopes, 0 for horizontal grounds
     field int dir;
+	field int score;
 
     // initializing
     function void Init(int mnln, int mxh) { // set maximal slope scalar
@@ -86,6 +87,8 @@ class Ground {
             let dir = 0;
         }
 
+		let score = ((240-y1)/25)+1;
+
         return this;
     }
 
@@ -108,6 +111,9 @@ class Ground {
     method int get_type() {
         return type;
     }
+	method int get_score() {
+		return score;
+	}
 
     // setters
     method void upd_xs(int dS) {
@@ -115,6 +121,12 @@ class Ground {
         let x2 = x2+dS;
         return;
     }
+	method void upd_ys(int dS) {
+        let y1 = y1+dS;
+        let y2 = y2+dS;
+        return;
+    }
+
 
     // drawing
     method void DrawOrClear(int ctrl) { // 0 for clearing, 1 for drawing
@@ -145,7 +157,7 @@ class Ground {
             //do output.movecursor(20, 0);
             do Output.moveCursor(((11+y1)/12)+2,(((x1+1)/8)+1));
             do Output.printInt(rand);
-            do Output.printChar(120);
+            do Output.printChar(120); // 'x'
         }
         
         return;
