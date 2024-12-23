@@ -67,21 +67,27 @@ class Instance {
     // display some information about draft
     method void displayInfo() {
         do Output.moveCursor(0, 0);
-        do Output.printString("Horizontal speed: ");
         do Output.printInt(vx);
-        do Output.printString("        ");
+        // do Output.printChar(' ');
         do Output.println();
-        do Output.printString("Vertical speed: ");
         do Output.printInt(vy);
-        do Output.printString("        ");
         do Output.println();
-        do Output.printString("Horizontal acceleration: ");
         do Output.printInt(ax);
-        do Output.printString("        ");
         do Output.println();
-        do Output.printString("Vertical acceleration: ");
         do Output.printInt(ay);
-        do Output.printString("        ");
+        return;
+    }
+    method int collision(int x, int y, int r) {
+        if(Terrain.checkCollision(x, y, r) = 1) {
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+    method void hideInfo() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(0, 0, 80, 80);
+        do Screen.setColor(true);
         return;
     }
 }
