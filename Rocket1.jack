@@ -7,7 +7,7 @@ class Rocket1 {
 field int x, y, cl_or_ccl, i;
 	field Array cos, sin;
 
-	constructor Rocket new (int ix, int iy) {
+	constructor Rocket1 new (int ix, int iy) {
 		let x = ix;
 		let y = iy;
 		let cl_or_ccl = 0;
@@ -62,7 +62,7 @@ field int x, y, cl_or_ccl, i;
 		return;
 	}
 
-	method void drawRocket_small (boolean color) {
+	method void drawRocket (boolean color) {
 		do Screen.setColor(color); // true for black and zero for white;
 		let cos = Array.new(16);
 		let sin = Array.new(16);
