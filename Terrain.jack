@@ -8,7 +8,7 @@
 */
 
 class Terrain {
-    static int Nums, i, rand;
+    static int Nums, i, rand, len, dH, pdH;
     static int x1, x2, y1, y2, cx, cy, xb, yb;
     static int abs, sqr, pdH;
     static Array arr;
@@ -50,6 +50,42 @@ class Terrain {
         
         return;
     }
+
+    function void initDrawer(int mnlen, int mxh) {
+        let x1 = 0;
+        let y1 = 255;
+        
+        while(x1 < 512) {
+            let rand = Random.get_num();
+            let len = mnlen+(rand-((mnlen*1)*(rand/(mnlen*1))));// random from mnlen to 3*mnlen
+            let x2 = x1+len;
+
+            let rand = Random.get_num();
+            let dH = 1+rand-(mxh*Math.divide(rand,mxh));// make dH = 0 impossible
+
+            let rand = Random.get_num();
+            let rand = rand-(2*(rand/2));
+            if (rand) {
+                let y2 = y1+dH;
+            } else {
+                let y2 = y1-dH;
+            }
+
+            if (x2 > 511) {
+                let x2 = 511;
+            }
+            if (y2 > 239) {
+                let y2 = 239;
+            }
+            
+            do Screen.drawLine(x1,y1,x2,y2);
+
+            let x1 = x2+1;
+            let y1 = y2;
+        }
+
+        return;
+    }
     
     function void Shifting(int dS) { // shift +dS along x axis
         let i = 0;
@@ -60,28 +96,6 @@ class Terrain {
             }
             do tmp.upd_xs(dS);// update
             if ((tmp.get_str_x()>0) & (tmp.get_end_x()<511)) {
-                do tmp.DrawOrClear(1);// draw
-            }
-            
-            let i = i+1;
-        }
-        
-        do Screen.setColor(0);
-        do Screen.drawRectangle(0,0,10,255);
-        do Screen.drawRectangle(501,0,511,255);
-
-        return;
-    }
-
-	function void ShiftingY(int dS) { // shift +dS along y axis
-        let i = 0;
-        while(i < Nums) {
-            let tmp = arr[i];
-            if ((tmp.get_str_y()>0) & (tmp.get_end_y()<255)) {
-                do tmp.DrawOrClear(0);// clear
-            }
-            do tmp.upd_ys(dS);// update
-            if ((tmp.get_str_y()>0) & (tmp.get_end_y()<255)) {
                 do tmp.DrawOrClear(1);// draw
             }
             

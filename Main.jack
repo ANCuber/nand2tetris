@@ -7,10 +7,11 @@ class Main {
         do TextDisplay.start_screen();
         // Initialization with x, y, vx, vy, ax, ay, fuel, angle
         let craft = Instance.new(80, 30, 5, 0, 0, 1, 0, 0);
-        let fuel = 700;
+        let fuel = 500;
         do craft.draw(true);
         do Random.set_seed(1558);
-        do Terrain.Init(251, 15, 30);
+        //do Terrain.Init(251, 15, 30);
+        do Terrain.initDrawer(15,30);
         do Data.Init();
         let key = 0;
         let score=0;
