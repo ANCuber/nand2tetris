@@ -1,17 +1,31 @@
 class Main {
-    // function int mod(int a, int b) {
-    //     return (a)-(a/b)*
-    // }
     function void main() {
         var Instance craft;
-        var int key, dAX, dAY;
+        var int key, dAX, dAY, score, fuel;
         var boolean burn;
+        var Explode boom;
+        do TextDisplay.start_screen();
         // Initialization with x, y, vx, vy, ax, ay, fuel, angle
         let craft = Instance.new(80, 30, 5, 0, 0, 1, 0, 0);
+        let fuel = 700;
         do craft.draw(true);
-        do Random.set_seed(11223);
-        do Terrain.Init(151, 15, 50);
+        do Random.set_seed(1558);
+        do Terrain.Init(251, 15, 50);
         do Data.Init();
+        let key = 0;
+        let score=0;
+        while(key=0){
+            let score=score+1;
+            if(score>30000){
+                let score=0;
+            }
+            let key = Keyboard.keyPressed();
+        }
+        do Random.set_seed(Math.abs(key*score));
+        let score=0;
+        do Screen.clearScreen();
+        do craft.draw(true);
+        do Terrain.Init(251,15,50);
         while(Terrain.checkCollision((craft.getx()), (craft.gety()), 7) = 0) {
             let burn = false;
             let key = Keyboard.keyPressed();
@@ -23,10 +37,11 @@ class Main {
             if(key = 132) { // press right
                 do craft.incAngle();
             }
-            if(key = 131) { // press up
+            if((key = 131) & (fuel > 0)) { // press up
                 let dAX = Data.getdAX(craft.getAngle()+15);
                 let dAY = Data.getdAY(craft.getAngle()+15);
                 let burn = true;
+                let fuel = fuel - 1;
                 do craft.updateRate(dAX, dAY);
             }
             do craft.changePos(craft.getx()+craft.getvx(), craft.gety()+craft.getvy());
@@ -39,7 +54,12 @@ class Main {
 				do Terrain.Shifting(412-craft.getx());
             	do craft.changePos(412, craft.gety());
 			}
+            if(craft.gety() < 10){
+            	do craft.changePos(craft.getx(), 10);
+			}
             do craft.displayInfo();
+            do Output.printString("Fuel: ");
+            do Output.printInt(fuel);
             if(burn) { do craft.updateRate(-dAX, -dAY); }
             do craft.draw(true);
             if(key = 131){
@@ -47,6 +67,28 @@ class Main {
             }
             do Sys.wait(100);
             do craft.hideInfo();
+        }
+        let score = Terrain.checkCollision((craft.getx()), (craft.gety()), 7);
+        if(score = -1) {
+            do craft.draw(false);
+            let boom = Explode.new(craft.getx(), craft.gety());
+            do boom.explode();
+            do Sys.wait(100);
+            do Screen.clearScreen();
+            do TextDisplay.fail_screen(craft.getx());
+        } else {
+            if((Math.abs(craft.getAngle())<4) & (craft.getvy() < 5)) {
+                do Sys.wait(100);
+                do Screen.clearScreen();
+                do TextDisplay.successful_screen((score*100));
+            }else{
+                do craft.draw(false);
+                let boom = Explode.new(craft.getx(), craft.gety());
+                do boom.explode();
+                do Sys.wait(100);
+                do Screen.clearScreen();
+                do TextDisplay.fail_screen(craft.getx());
+            }
         }
         return;
     }

@@ -71,19 +71,18 @@ class Instance {
     // display some information about draft
     method void displayInfo() {
         do Output.moveCursor(0, 0);
+        do Output.printString("Horizontal: ");
         do Output.printInt(vx);
         // do Output.printChar(' ');
         do Output.println();
+        do Output.printString("Vertical: ");
         do Output.printInt(vy);
         do Output.println();
-        do Output.printInt(ax);
-        do Output.println();
-        do Output.printInt(ay);
         return;
     }
     method void hideInfo() {
         do Screen.setColor(false);
-        do Screen.drawRectangle(0, 0, 80, 80);
+        do Screen.drawRectangle(0, 0, 130, 100);
         do Screen.setColor(true);
         return;
     }

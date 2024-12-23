@@ -21,7 +21,7 @@ class Terrain {
         do Ground.Init(mnlen, mxh);
         
         // initializing
-        let arr[0] = Ground.new(-500,254,1);// default going up for the first Ground
+        let arr[0] = Ground.new(-800,254,1);// default going up for the first Ground
         let i = 1;
         while (i < Nums) { // 1 to N-1
             let tmp = arr[i-1];

@@ -7,7 +7,7 @@ class Rocket {
 field int x, y, cl_or_ccl, i, fire;
 	field Array cos, sin;
 
-	constructor Rocket new (int ix, int iy, int fire) {
+	constructor Rocket new (int ix, int iy) {
 		let x = ix;
 		let y = iy;
 		let cl_or_ccl = 0;

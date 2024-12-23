@@ -16,6 +16,7 @@ class TextDisplay{
 		do Output.printString("GAME OVER");
 		do Output.println();
 		do Random.set_seed(s);
+		let t = Random.get_num()/10000;
 		let t = Math.divide(Random.get_num(),10000);
 		if (t=0){
 			do Output.moveCursor(11,22);
