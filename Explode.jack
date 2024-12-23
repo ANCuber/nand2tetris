@@ -1,0 +1,90 @@
+class Explode {
+	field int x, y;
+
+	constructor Explode new (int ix, int iy) {
+		let x = ix;
+		let y = iy;
+		return this;
+	}
+	method void explode () {
+		var int color, time;
+		let time = 10;
+		while(~(time < 0)){
+			let color = (time / 2 * 2 - time = 0);
+			do Screen.setColor(color);
+			do Screen.drawPixel(0 + x, -7 + y);
+			do Screen.drawPixel(1 + x, -6 + y);
+			do Screen.drawPixel(1 + x, -5 + y);
+			do Screen.drawPixel(2 + x, -4 + y);
+			do Screen.drawPixel(2 + x, -3 + y);
+			do Screen.drawPixel(3 + x, -4 + y);
+			do Screen.drawPixel(4 + x, -4 + y);
+			do Screen.drawPixel(5 + x, -5 + y);
+			do Screen.drawPixel(6 + x, -5 + y);
+			do Screen.drawPixel(6 + x, -4 + y);
+			do Screen.drawPixel(7 + x, -6 + y);
+			do Screen.drawPixel(8 + x, -7 + y);
+			do Screen.drawPixel(5 + x, -5 + y);
+			do Screen.drawPixel(5 + x, -3 + y);
+			do Screen.drawPixel(5 + x, -2 + y);
+			do Screen.drawPixel(5 + x, -1 + y);
+			do Screen.drawPixel(4 + x, -1 + y);
+			do Screen.drawPixel(6 + x, -0 + y);
+			do Screen.drawPixel(7 + x, -0 + y);
+
+			do Screen.drawPixel(-1 + x, -6 + y);
+			do Screen.drawPixel(-1 + x, -5 + y);
+			do Screen.drawPixel(-2 + x, -4 + y);
+			do Screen.drawPixel(-3 + x, -4 + y);
+			do Screen.drawPixel(-4 + x, -5 + y);
+			do Screen.drawPixel(-5 + x, -5 + y);
+			do Screen.drawPixel(-6 + x, -6 + y);
+			do Screen.drawPixel(-5 + x, -4 + y);
+			do Screen.drawPixel(-4 + x, -3 + y);
+			do Screen.drawPixel(-4 + x, -2 + y);
+			do Screen.drawPixel(-5 + x, -2 + y);
+			do Screen.drawPixel(-6 + x, -1 + y);
+			do Screen.drawPixel(-7 + x, -1 + y);
+			do Screen.drawPixel(-8 + x, -0 + y);
+
+			do Screen.drawPixel(-0 + x, 7 + y);
+			do Screen.drawPixel(-1 + x, 6 + y);
+			do Screen.drawPixel(-1 + x, 5 + y);
+			do Screen.drawPixel(-2 + x, 4 + y);
+			do Screen.drawPixel(-2 + x, 3 + y);
+			do Screen.drawPixel(-3 + x, 4 + y);
+			do Screen.drawPixel(-4 + x, 4 + y);
+			do Screen.drawPixel(-5 + x, 5 + y);
+			do Screen.drawPixel(-6 + x, 5 + y);
+			do Screen.drawPixel(-6 + x, 4 + y);
+			do Screen.drawPixel(-7 + x, 6 + y);
+			do Screen.drawPixel(-8 + x, 7 + y);
+			do Screen.drawPixel(-5 + x, 5 + y);
+			do Screen.drawPixel(-5 + x, 3 + y);
+			do Screen.drawPixel(-5 + x, 2 + y);
+			do Screen.drawPixel(-5 + x, 1 + y);
+			do Screen.drawPixel(-4 + x, 1 + y);
+			do Screen.drawPixel(-6 + x, 0 + y);
+			do Screen.drawPixel(-7 + x, 0 + y);
+
+			do Screen.drawPixel(1 + x, 6 + y);
+			do Screen.drawPixel(1 + x, 5 + y);
+			do Screen.drawPixel(2 + x, 4 + y);
+			do Screen.drawPixel(3 + x, 4 + y);
+			do Screen.drawPixel(4 + x, 5 + y);
+			do Screen.drawPixel(5 + x, 5 + y);
+			do Screen.drawPixel(6 + x, 6 + y);
+			do Screen.drawPixel(5 + x, 4 + y);
+			do Screen.drawPixel(4 + x, 3 + y);
+			do Screen.drawPixel(4 + x, 2 + y);
+			do Screen.drawPixel(5 + x, 2 + y);
+			do Screen.drawPixel(6 + x, 1 + y);
+			do Screen.drawPixel(7 + x, 1 + y);
+			do Screen.drawPixel(8 + x, 0 + y);
+
+			do Sys.wait(50);
+			let time = time - 1;
+		}
+		return;
+	}
+}

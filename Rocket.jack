@@ -4,10 +4,10 @@
 */
 
 class Rocket {
-field int x, y, cl_or_ccl, i;
+field int x, y, cl_or_ccl, i, fire;
 	field Array cos, sin;
 
-	constructor Rocket new (int ix, int iy) {
+	constructor Rocket new (int ix, int iy, int fire) {
 		let x = ix;
 		let y = iy;
 		let cl_or_ccl = 0;
@@ -150,6 +150,66 @@ field int x, y, cl_or_ccl, i;
 		do Screen.drawPixel(-1 * cos[i] - (2 * sin[i]) / 100 + x, -1 * sin[i] + (2 * cos[i]) / 100 + y); //(-1, 2)
 		do Screen.drawLine(-6 * cos[i] - (6 * sin[i]) / 100 + x, -6 * sin[i] + (6 * cos[i]) / 100 + y, -7 * cos[i] - (6 * sin[i]) / 100 + x, -7 * sin[i] + (6 * cos[i]) / 100 + y); 
 		//(-6 -7, 6)
+
+		if(fire) {
+			//cycle 1
+			do Screen.setColor(1);
+			do Screen.drawPixel(0 * cos[i] - (14 * sin[i]) / 100 + x, 0 * sin[i] + (14 * cos[i]) / 100 + y); //(0, 14)
+			do Screen.drawPixel(0 * cos[i] - (15 * sin[i]) / 100 + x, 0 * sin[i] + (15 * cos[i]) / 100 + y); //(0, 15)
+
+			do Screen.drawPixel(2 * cos[i] - (8 * sin[i]) / 100+ x, 2 * sin[i] + (8 * cos[i]) / 100+ y); //(2, 8)
+			do Screen.drawPixel(2 * cos[i] - (9 * sin[i]) / 100+ x, 2 * sin[i] + (9 * cos[i]) / 100+ y); //(2 ,9)
+			do Screen.drawPixel(2 * cos[i] - (10 * sin[i]) / 100 + x, 2 * sin[i] + (10 * cos[i]) / 100 + y); //(2, 10)
+			do Screen.drawPixel(2 * cos[i] - (11 * sin[i]) / 100 + x, 2 * sin[i] + (11 * cos[i]) / 100 + y); //(2, 11)
+			do Screen.drawPixel(1 * cos[i] - (12 * sin[i]) / 100 + x, 1 * sin[i] + (12 * cos[i]) / 100 + y); //(1, 12)
+			do Screen.drawPixel(1 * cos[i] - (13 * sin[i]) / 100 + x, 1 * sin[i] + (13 * cos[i]) / 100 + y); //(1, 13)
+
+			do Screen.drawPixel(-2 * cos[i] - (8 * sin[i]) / 100 + x, -2 * sin[i] + (8 * cos[i]) / 100 + y); //(-2, 8)
+			do Screen.drawPixel(-2 * cos[i] - (9 * sin[i]) / 100 + x, -2 * sin[i] + (9 * cos[i]) / 100 + y); //(-2 ,9)
+			do Screen.drawPixel(-2 * cos[i] - (10 * sin[i]) / 100 + x, -2 * sin[i] +(10 * cos[i]) / 100+ y); //(-2, 10)
+			do Screen.drawPixel(-2 * cos[i] - (11 * sin[i]) / 100 + x, -2 * sin[i] +(11 * cos[i]) / 100+ y); //(-2, 11)
+			do Screen.drawPixel(-1 * cos[i] - (12 * sin[i]) / 100 + x, -1 * sin[i] +(12 * cos[i]) / 100+ y); //(-1, 12)
+			do Screen.drawPixel(-1 * cos[i] - (13 * sin[i]) / 100 + x, -1 * sin[i] +(13 * cos[i]) / 100+ y); //(-1, 13)
+
+			do Sys.wait(20);
+			
+			//undo1
+			do Screen.setColor(0);
+			do Screen.drawPixel(0 * cos[i] - (14 * sin[i]) / 100 + x, 0 * sin[i] + (14 * cos[i]) / 100+ y); //(0, 14)
+			do Screen.drawPixel(0 * cos[i] - (15 * sin[i]) / 100 + x, 0 * sin[i] + (15 * cos[i]) / 100  + y); //(0, 15)
+
+			do Screen.drawPixel(2 * cos[i] - (10 * sin[i]) / 100 + x, 2 * sin[i] + (10 * cos[i]) / 100 + y); //(2, 10)
+			do Screen.drawPixel(2 * cos[i] - (11 * sin[i]) / 100 + x, 2 * sin[i] + (11 * cos[i]) / 100 + y); //(2, 11)
+			do Screen.drawPixel(1 * cos[i] - (12 * sin[i]) / 100 + x, 1 * sin[i] + (12 * cos[i]) / 100 + y); //(1, 12)
+			do Screen.drawPixel(1 * cos[i] - (13 * sin[i]) / 100 + x, 1 * sin[i] + (13 * cos[i]) / 100 + y); //(1, 13)
+
+			do Screen.drawPixel(-2 * cos[i] - (10 * sin[i]) / 100 + x, -2 * sin[i] + (10 * cos[i]) / 100 + y); //(-2, 10)
+			do Screen.drawPixel(-2 * cos[i] - (11 * sin[i]) / 100 + x, -2 * sin[i] + (11 * cos[i]) / 100 + y); //(-2, 11)
+			do Screen.drawPixel(-1 * cos[i] - (12 * sin[i]) / 100 + x, -1 * sin[i] + (12 * cos[i]) / 100 + y); //(-1, 12)
+			do Screen.drawPixel(-1 * cos[i] - (13 * sin[i]) / 100 + x, -1 * sin[i] + (13 * cos[i]) / 100 + y); //(-1, 13)
+
+			//cycle 2
+			do Screen.setColor(1);
+			do Screen.drawPixel(0 * cos[i] - (12 * sin[i]) / 100 + x, 0 * sin[i] + (12 * cos[i]) / 100 + y); //(0, 12)
+
+			do Screen.drawPixel(2 * cos[i] - (10 * sin[i]) / 100 + x, 2 * sin[i] + (10 * cos[i]) / 100 + y); //(2, 10)
+			do Screen.drawPixel(1 * cos[i] - (11 * sin[i]) / 100 + x, 1 * sin[i] + (11 * cos[i]) / 100 + y); //(1, 11)
+
+			do Screen.drawPixel(-2 * cos[i] - (10 * sin[i]) / 100 + x, -2 * sin[i] + (10 * cos[i]) / 100 + y); //(-2, 10)
+			do Screen.drawPixel(-1 * cos[i] - (11 * sin[i]) / 100 + x, -1 * sin[i] + (11 * cos[i]) / 100 + y); //(-1, 11)
+
+			do Sys.wait(20);
+
+			//undo2
+			do Screen.setColor(0);
+			do Screen.drawPixel(0 * cos[i] - (12 * sin[i]) / 100 + x, 0 * sin[i] + (12 * cos[i]) / 100 + y); //(0, 12)
+
+			do Screen.drawPixel(2 * cos[i] - (10 * sin[i]) / 100 + x, 2 * sin[i] + (10 * cos[i]) / 100 + y); //(2, 10)
+			do Screen.drawPixel(1 * cos[i] - (11 * sin[i]) / 100 + x, 1 * sin[i] + (11 * cos[i]) / 100 + y); //(1, 11)
+
+			do Screen.drawPixel(-2 * cos[i] - (10 * sin[i]) / 100 + x, -2 * sin[i] + (10 * cos[i]) / 100 + y); //(-2, 10)
+			do Screen.drawPixel(-1 * cos[i] - (11 * sin[i]) / 100 + x, -1 * sin[i] + (11 * cos[i]) / 100 + y); //(-1, 11)
+		}
 		return;
 	}
 	method void fire(boolean color) {
