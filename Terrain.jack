@@ -74,6 +74,17 @@ class Terrain {
     }
 
     function int checkCollision(int x0, int y0, int rng) {// return 0 if no collision, 1 if colliding with horizontal grounds, -1 with slopes.
+<<<<<<< HEAD
+        let x1 = 0;
+        let y1 = 0;
+=======
+        var int i, x1, y1, x2, y2;
+        var int cx, cy;
+        var int abs;
+        var int sqr;
+        var Ground tmp;
+>>>>>>> main
+
         let x1 = 0;
         let y1 = 0;
 

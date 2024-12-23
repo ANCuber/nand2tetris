@@ -48,11 +48,21 @@ class Ground {
             let rand = Random.get_num();
             let rand = rand-(4*Math.divide(rand,4)); // rand % 4, decide to go up or down, then weighted by pdH
 
+<<<<<<< HEAD
             // check height limits
             if ((y1 < 150)) {
                 let rand = 3;
             }
         
+=======
+            // restrict the height
+            if (y1 < 150) {
+                let rand = 3;
+            }
+        
+            let x2 = xb+len;
+            //do Output.printInt(rand);
+>>>>>>> main
             if (rand < (2+pdH)) { // prefer the same slope direction
                 let y2 = y1-dH; // - for up
                 let dir = 1;
@@ -62,6 +72,7 @@ class Ground {
             }
             
             // check boundary conditions
+<<<<<<< HEAD
             if (y2 > 239) { // 240 = 15*16
                 if (y1 = 239) {
                     if (pdH = 0) {
@@ -72,6 +83,10 @@ class Ground {
                 } else {
                     let y2 = 239;
                 }
+=======
+            if (y2 > 254) {
+                let y2 = 254;
+>>>>>>> main
             }
             
             // change to a horizontal ground for some cases

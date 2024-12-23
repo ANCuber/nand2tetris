@@ -1,7 +1,5 @@
-#ignore all files
-*
 
-#unignore all with extensions and all dirs
+*
 !*.* 
 !*/
 
@@ -13,4 +11,4 @@ test/
 tools/
 projects/
 nand2tetris_HW/
-
+*.vm
