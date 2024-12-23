@@ -14,9 +14,9 @@ class Instance {
     }
     method void updateVelocity() {
         let vx = vx + ax;
-        let vx = (vx) - ((vx*vx)/100); // air resitence in x-axis
+        let vx = (vx) -((vx)/5); // air resitence in x-axis
         let vy = vy + ay;
-        let vy = (vy) - ((vy*vy)/60);// air resitence in y-axis
+        let vy = (vy) - ((vy)/5);// air resitence in y-axis
         return;
     }
     method void draw(boolean color) {
