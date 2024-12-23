@@ -12,6 +12,8 @@
 
 class Ground {
     static int mnlen, maxHeight; // minimal length and maximal slope scalar
+    static int rand, dH, mx;
+    static int tmpx, tmpy, curx, cury;
     field int x1, y1, x2, y2; // position
     field int len; // length
     field int type; // 1 for slopes, 0 for horizontal grounds
@@ -26,9 +28,6 @@ class Ground {
     
     // constructor
     constructor Ground new(int xb, int yb, int pdH) { // pdH should be -1(go down), 0(horizontal) or 1(go up)
-        var int rand;
-        var int dH;
-
         let x1 = xb+1;
         let y1 = yb;
         
@@ -119,10 +118,6 @@ class Ground {
 
     // drawing
     method void DrawOrClear(int ctrl) { // 0 for clearing, 1 for drawing
-        var int rand;
-        var int mx;
-        var int tmpx, tmpy, curx, cury;
-
         let mx = y1;
         if (y2 > y1)  {let mx = y2;}
         

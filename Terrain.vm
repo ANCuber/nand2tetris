@@ -1,17 +1,17 @@
-function Terrain.Init 5
+function Terrain.Init 0
 push argument 0
 pop static 0
 push static 0
 push constant 5
 add
 call Array.new 1
-pop static 1
+pop static 14
 push argument 1
 push argument 2
 call Ground.Init 2
 pop temp 0
 push constant 0
-push static 1
+push static 14
 add
 push constant 500
 neg
@@ -23,66 +23,66 @@ pop pointer 1
 push temp 0
 pop that 0
 push constant 1
-pop local 0
+pop static 1
 label WHILE_EXP0
-push local 0
+push static 1
 push static 0
 lt
 not
 if-goto WHILE_END0
-push local 0
+push static 1
 push constant 1
 sub
-push static 1
+push static 14
 add
 pop pointer 1
 push that 0
-pop static 2
-push static 2
+pop static 15
+push static 15
 call Ground.get_end_x 1
-pop local 2
-push static 2
+pop static 9
+push static 15
 call Ground.get_end_y 1
-pop local 3
-push static 2
+pop static 10
+push static 15
 call Ground.get_dir 1
-pop local 4
-push local 0
+pop static 13
 push static 1
+push static 14
 add
-push local 2
-push local 3
-push local 4
+push static 9
+push static 10
+push static 13
 call Ground.new 3
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push local 0
+push static 1
 push constant 1
 add
-pop local 0
+pop static 1
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0
-pop local 0
+pop static 1
 label WHILE_EXP1
-push local 0
+push static 1
 push static 0
 lt
 not
 if-goto WHILE_END1
-push local 0
 push static 1
+push static 14
 add
 pop pointer 1
 push that 0
-pop static 2
-push static 2
+pop static 15
+push static 15
 call Ground.get_str_x 1
 push constant 0
 gt
-push static 2
+push static 15
 call Ground.get_end_x 1
 push constant 511
 lt
@@ -90,18 +90,18 @@ and
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push static 2
+push static 15
 push constant 1
 call Ground.DrawOrClear 2
 pop temp 0
 label IF_FALSE0
-push local 0
+push static 1
 push constant 1
 add
-pop local 0
+pop static 1
 goto WHILE_EXP1
 label WHILE_END1
-push constant 1
+push constant 0
 call Screen.setColor 1
 pop temp 0
 push constant 0
@@ -118,26 +118,26 @@ call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 return
-function Terrain.Shifting 1
+function Terrain.Shifting 0
 push constant 0
-pop local 0
+pop static 1
 label WHILE_EXP0
-push local 0
+push static 1
 push static 0
 lt
 not
 if-goto WHILE_END0
-push local 0
 push static 1
+push static 14
 add
 pop pointer 1
 push that 0
-pop static 2
-push static 2
+pop static 15
+push static 15
 call Ground.get_str_x 1
 push constant 0
 gt
-push static 2
+push static 15
 call Ground.get_end_x 1
 push constant 511
 lt
@@ -145,20 +145,20 @@ and
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push static 2
+push static 15
 push constant 0
 call Ground.DrawOrClear 2
 pop temp 0
 label IF_FALSE0
-push static 2
+push static 15
 push argument 0
 call Ground.upd_xs 2
 pop temp 0
-push static 2
+push static 15
 call Ground.get_str_x 1
 push constant 0
 gt
-push static 2
+push static 15
 call Ground.get_end_x 1
 push constant 511
 lt
@@ -166,18 +166,18 @@ and
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push static 2
+push static 15
 push constant 1
 call Ground.DrawOrClear 2
 pop temp 0
 label IF_FALSE1
-push local 0
+push static 1
 push constant 1
 add
-pop local 0
+pop static 1
 goto WHILE_EXP0
 label WHILE_END0
-push constant 1
+push constant 0
 call Screen.setColor 1
 pop temp 0
 push constant 0
@@ -194,72 +194,72 @@ call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 return
-function Terrain.checkCollision 9
+function Terrain.checkCollision 0
 push constant 0
-pop local 1
+pop static 3
 push constant 0
-pop local 2
+pop static 5
 push constant 0
-pop local 0
+pop static 1
 label WHILE_EXP0
-push local 0
+push static 1
 push static 0
 lt
 not
 if-goto WHILE_END0
-push local 0
 push static 1
+push static 14
 add
 pop pointer 1
 push that 0
-pop static 2
-push static 2
+pop static 15
+push static 15
 call Ground.get_end_x 1
-push static 2
+push static 15
 call Ground.get_str_x 1
 sub
-pop local 3
-push static 2
+pop static 4
+push static 15
 call Ground.get_end_y 1
-push static 2
+push static 15
 call Ground.get_str_y 1
 sub
-pop local 4
+pop static 6
 push argument 0
-push static 2
+push static 15
 call Ground.get_str_x 1
 sub
-pop local 5
+pop static 7
 push argument 1
-push static 2
+push static 15
 call Ground.get_str_y 1
 sub
-pop local 6
+pop static 8
 push argument 2
 neg
-push local 5
+push static 7
 lt
-push local 5
-push local 3
+push static 7
+push static 4
 push argument 2
 add
 lt
 and
 push argument 2
 neg
-push local 6
+push static 8
 lt
-push local 6
-push local 4
+push static 8
+push static 6
 push argument 2
 add
 lt
 and
 push argument 2
-push local 6
+push static 8
 gt
-push local 6
-push local 4
+push static 8
+push static 6
 push argument 2
 sub
 gt
@@ -269,40 +269,40 @@ and
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push local 3
-push local 6
+push static 4
+push static 8
 call Math.multiply 2
-push local 4
-push local 5
+push static 6
+push static 7
 call Math.multiply 2
 sub
-pop local 7
-push local 3
-push local 3
+pop static 11
+push static 4
+push static 4
 call Math.multiply 2
-push local 4
-push local 4
+push static 6
+push static 6
 call Math.multiply 2
 add
-pop local 8
-push local 7
+pop static 12
+push static 11
 push constant 0
 lt
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push local 7
+push static 11
 neg
-pop local 7
+pop static 11
 label IF_FALSE1
-push static 2
+push static 15
 call Ground.get_type 1
 push constant 1
 eq
-push local 7
-push local 7
+push static 11
+push static 11
 call Math.multiply 2
-push local 8
+push static 12
 push argument 2
 call Math.multiply 2
 push argument 2
@@ -316,14 +316,14 @@ push constant 1
 neg
 return
 label IF_FALSE2
-push static 2
+push static 15
 call Ground.get_type 1
 push constant 0
 eq
-push local 7
-push local 7
+push static 11
+push static 11
 call Math.multiply 2
-push local 8
+push static 12
 push argument 2
 call Math.multiply 2
 push argument 2
@@ -337,10 +337,10 @@ push constant 1
 return
 label IF_FALSE3
 label IF_FALSE0
-push local 0
+push static 1
 push constant 1
 add
-pop local 0
+pop static 1
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0
