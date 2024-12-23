@@ -10,7 +10,7 @@ class Main {
         let fuel = 700;
         do craft.draw(true);
         do Random.set_seed(1558);
-        do Terrain.Init(251, 15, 50);
+        do Terrain.Init(251, 15, 30);
         do Data.Init();
         let key = 0;
         let score=0;
@@ -25,7 +25,7 @@ class Main {
         let score=0;
         do Screen.clearScreen();
         do craft.draw(true);
-        do Terrain.Init(251,15,50);
+        do Terrain.Init(251,15,30);
         while(Terrain.checkCollision((craft.getx()), (craft.gety()), 7) = 0) {
             let burn = false;
             let key = Keyboard.keyPressed();
