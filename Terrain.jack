@@ -10,7 +10,7 @@
 class Terrain {
     static int Nums;
     static Array arr;
-
+    static Ground tmp;
     function void Init(int N, int len, int mxh) { // initialize N grounds, with length of len and maximal slope of mxh
         var int i;
         var int rand;
@@ -75,7 +75,6 @@ class Terrain {
         var int cx, cy;
         var int abs;
         var int sqr;
-        var Ground tmp;
 
         let x1 = 0;
         let y1 = 0;
