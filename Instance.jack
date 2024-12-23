@@ -1,3 +1,4 @@
+// for simplicity, we define angle from -15 to 15
 class Instance {
     field Rocket rocket;
     field int vx, vy, ax, ay, angle, fuel;

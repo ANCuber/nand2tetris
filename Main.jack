@@ -25,7 +25,7 @@ class Main {
             if(key = 132) { // press right
                 do craft.incAngle();
             }
-            if(key = 131) {
+            if(key = 131) { // press up
                 let dAX = Data.getdAX(craft.getAngle()+15);
                 let dAY = Data.getdAY(craft.getAngle()+15);
                 let burn = true;
@@ -36,7 +36,7 @@ class Main {
             do craft.displayInfo();
             if(burn) { do craft.updateRate(-dAX, -dAY); }
             do craft.draw(true);
-            do Sys.wait(90);
+            do Sys.wait(100);
         }
         return;
     }

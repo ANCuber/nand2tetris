@@ -5,7 +5,7 @@ class Data {
     // AX = [-2, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2]
     // AY = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0]
     function void Init() {
-        let len = 16;
+        let len = 31;
         let AX = Array.new(len);
         let AY = Array.new(len);
         // Assign values to AX
@@ -15,44 +15,72 @@ class Data {
         let AX[3] = -1;
         let AX[4] = -1;
         let AX[5] = -1;
-        let AX[6] = 0;
-        let AX[7] = 0;
-        let AX[8] = 0;
-        let AX[9] = 0;
-        let AX[10] = 0;
-        let AX[11] = 1;
-        let AX[12] = 1;
-        let AX[13] = 1;
-        let AX[14] = 1;
-        let AX[15] = 2;
-
-        // Assign values to AY
+        let AX[6] = -1;
+        let AX[7] = -1;
+        let AX[8] = -1;
+        let AX[9] = -1;
+        let AX[10] = -1;
+        let AX[11] = 0;
+        let AX[12] = 0;
+        let AX[13] = 0;
+        let AX[14] = 0;
+        let AX[15] = 0;
+        let AX[16] = 0;
+        let AX[17] = 0;
+        let AX[18] = 0;
+        let AX[19] = 0;
+        let AX[20] = 0;
+        let AX[21] = 1;
+        let AX[22] = 1;
+        let AX[23] = 1;
+        let AX[24] = 1;
+        let AX[25] = 1;
+        let AX[26] = 1;
+        let AX[27] = 1;
+        let AX[28] = 1;
+        let AX[29] = 1;
+        let AX[30] = 2;
         let AY[0] = 0;
         let AY[1] = 0;
         let AY[2] = 0;
-        let AY[3] = 1;
-        let AY[4] = 1;
-        let AY[5] = 1;
-        let AY[6] = 1;
-        let AY[7] = 1;
-        let AY[8] = 1;
-        let AY[9] = 1;
-        let AY[10] = 1;
-        let AY[11] = 1;
-        let AY[12] = 1;
-        let AY[13] = 0;
-        let AY[14] = 0;
-        let AY[15] = 0;
+        let AY[3] = 0;
+        let AY[4] = 0;
+        let AY[5] = 0;
+        let AY[6] = -1;
+        let AY[7] = -1;
+        let AY[8] = -1;
+        let AY[9] = -1;
+        let AY[10] = -1;
+        let AY[11] = -1;
+        let AY[12] = -1;
+        let AY[13] = -1;
+        let AY[14] = -1;
+        let AY[15] = -2;
+        let AY[16] = -1;
+        let AY[17] = -1;
+        let AY[18] = -1;
+        let AY[19] = -1;
+        let AY[20] = -1;
+        let AY[21] = -1;
+        let AY[22] = -1;
+        let AY[23] = -1;
+        let AY[24] = -1;
+        let AY[25] = 0;
+        let AY[26] = 0;
+        let AY[27] = 0;
+        let AY[28] = 0;
+        let AY[29] = 0;
+        let AY[30] = 0;
 
         return;
     }
     function int getdAX(int i) {
-        if(i > 15) { return AX[15]; }
+        if(i > 30) { return AX[30]; }
         if(i < 0) { return AX[0]; }
         return AX[i];
     }
     function int getdAY(int i) {
-        if(i > 15) { return AY[15]; }
+        if(i > 30) { return AY[30]; }
         if(i < 0) { return AY[0]; }
         return AY[i];
     }
