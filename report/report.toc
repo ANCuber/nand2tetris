@@ -1,3 +1,0 @@
-\contentsline {chapter}{Contents}{ii}{Doc-Start}%
-\contentsline {chapter}{List of Tables}{iii}{Doc-Start}%
-\contentsline {chapter}{List of Figures}{iv}{Doc-Start}%
