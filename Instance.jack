@@ -61,7 +61,11 @@ class Instance {
     method void updateRate(int ix, int iy) {
         // update acceleration
         let ax = ax + ix;
-        let ay = ay + iy;
+        if((ay+iy) = 0) {
+            let ay = ay;
+        }else {
+            let ay = ay + iy;
+        }
         return;
     }
     // display some information about draft
