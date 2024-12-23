@@ -160,7 +160,7 @@ class Circle {
     // }
     method void printInfo() {
         do Screen.clearScreen();
-        do draw();
+        // do draw();
         do Output.moveCursor(0, 0);
         do Output.printString("angle: ");
         do Output.printInt(angle);
@@ -180,7 +180,7 @@ class Circle {
         do Output.printString(", ");
         do Output.printInt(ay);
         do Output.printString(")");
-        do Sys.wait(500);
+        // do Sys.wait(500);
         return;
     }
     method void updateRate() { // update acceleration
@@ -193,8 +193,8 @@ class Circle {
         return;
     }
     method void updateSpeed() { // update velocity
-        let vx = vx + ax;
-        let vy = vy + ay;
+        let vx = (vx+ax)-((vx*vx)/(100));
+        let vy = (vy+ay)-((vy*vy)/(100));
         return;
     }
     method void move() {
