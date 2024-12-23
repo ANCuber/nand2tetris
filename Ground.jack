@@ -11,14 +11,15 @@
 */
 
 class Ground {
-    static int len, maxHeight; // lenght and maximal slope(+-maxHeight/len)
+    static int mnlen, maxHeight; // minimal length and maximal slope scalar
     field int x1, y1, x2, y2; // position
+    field int len; // length
     field int type; // 1 for slopes, 0 for horizontal grounds
     field int dir;
 
     // initializing
-    function void Init(int ln, int mxh) { // set length and maximal slope
-        let len = ln;
+    function void Init(int mnln, int mxh) { // set maximal slope scalar
+        let mnlen = mnln;
         let maxHeight = mxh;
         return;
     }
@@ -30,24 +31,29 @@ class Ground {
 
         let x1 = xb+1;
         let y1 = yb;
+        
+        let rand = Random.get_num();
+        let len = mnlen+(rand-((mnlen*1)*(rand/(mnlen*1))));// random from mnlen to 3*mnlen
+        let x2 = xb+len;
+
         let rand = Random.get_num();
 
-        if (rand > 1000) { // set ground type
+        if ((rand > 2000) | (pdH = 0)) { // set ground type
             // slope
             let type = 1;
             
             let rand = Random.get_num();
-            let dH = rand-(maxHeight*Math.divide(rand,maxHeight));
+            let dH = 1+rand-(maxHeight*Math.divide(rand,maxHeight));// make dH = 0 impossible
+            let dH = ((dH/12)+1)*12;
+            
             let rand = Random.get_num();
             let rand = rand-(4*Math.divide(rand,4)); // rand % 4, decide to go up or down, then weighted by pdH
 
-            // restrict the height
-            if (y1 < 150) {
+            // check height limits
+            if ((y1 < 150)) {
                 let rand = 3;
             }
         
-            let x2 = xb+len;
-            //do Output.printInt(rand);
             if (rand < (2+pdH)) { // prefer the same slope direction
                 let y2 = y1-dH; // - for up
                 let dir = 1;
@@ -57,8 +63,16 @@ class Ground {
             }
             
             // check boundary conditions
-            if (y2 > 254) {
-                let y2 = 254;
+            if (y2 > 239) { // 240 = 15*16
+                if (y1 = 239) {
+                    if (pdH = 0) {
+                        let y2 = (y2-dH-dH);
+                    } else {
+                        let y2 = 239;
+                    }
+                } else {
+                    let y2 = 239;
+                }
             }
             
             // change to a horizontal ground for some cases
@@ -69,7 +83,6 @@ class Ground {
         } else {
             // horizontal ground
             let type = 0;
-            let x2 = xb+len;
             let y2 = y1;
             let dir = 0;
         }
@@ -106,8 +119,40 @@ class Ground {
 
     // drawing
     method void DrawOrClear(int ctrl) { // 0 for clearing, 1 for drawing
+        var int rand;
+        var int mx;
+        var int tmpx, tmpy, curx, cury;
+
+        let mx = y1;
+        if (y2 > y1)  {let mx = y2;}
+        
+        if (type = 0) {
+            do Screen.setColor(0);
+            let tmpx = x2+30;
+            let tmpy = mx+30;
+            let curx = x1;
+        
+            if (tmpx > 511) {let tmpx = 511;}
+            if (tmpy > 255) {let tmpy = 255;}
+            if (curx < 0) {let curx = 0;}
+            do Screen.drawRectangle(curx,mx,tmpx,tmpy);
+        }
+        
+        if ((x1<0) & (x2>511)) {
+            return;
+        }
+       
         do Screen.setColor(ctrl);
         do Screen.drawLine(x1, y1, x2, y2);
+        
+        if ((type = 0) & ctrl) {
+            let rand = ((240-y1)/25)+1;
+            //do output.movecursor(20, 0);
+            do Output.moveCursor(((11+y1)/12)+2,(((x1+1)/8)+1));
+            do Output.printInt(rand);
+            do Output.printChar(120);
+        }
+        
         return;
     }
 }

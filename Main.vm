@@ -1,66 +1,47 @@
 function Main.main 2
-    call Screen.clearScreen 0
-    pop temp 0
-    push constant 137
-    call Random.set_seed 1
-    pop temp 0
-    push constant 151
-    push constant 10
-    push constant 50
-    call Terrain.Init 3
-    pop temp 0
-label Main_0
-    push constant 1
-    push constant 1
-    eq
-    not
-    if-goto Main_1
-    push constant 400
-    push constant 200
-    push constant 5
-    call Screen.drawCircle 3
-    pop temp 0
-    call Keyboard.keyPressed 0
-    push constant 130
-    eq
-    not
-    if-goto Main_3
-    push constant 1
-    neg
-    call Terrain.Shifting 1
-    pop temp 0
-    goto Main_2
-label Main_3
-label Main_2
-    call Keyboard.keyPressed 0
-    push constant 132
-    eq
-    not
-    if-goto Main_5
-    push constant 1
-    call Terrain.Shifting 1
-    pop temp 0
-    goto Main_4
-label Main_5
-label Main_4
-    push constant 400
-    push constant 200
-    push constant 5
-    call Terrain.checkCollision 3
-    pop local 1
-    push local 1
-    push constant 0
-    eq
-    not
-    not
-    if-goto Main_7
-    push local 1
-    call Output.printInt 1
-    pop temp 0
-    goto Main_6
-label Main_7
-label Main_6
-    goto Main_0
-label Main_1
-    push constant 0
-    return
+call Screen.clearScreen 0
+pop temp 0
+push constant 137
+call Random.set_seed 1
+pop temp 0
+push constant 151
+push constant 10
+push constant 50
+call Terrain.Init 3
+pop temp 0
+label WHILE_EXP0
+push constant 1
+push constant 1
+eq
+not
+if-goto WHILE_END0
+push constant 400
+push constant 200
+push constant 5
+call Screen.drawCircle 3
+pop temp 0
+call Keyboard.keyPressed 0
+push constant 130
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+neg
+call Terrain.Shifting 1
+pop temp 0
+label IF_FALSE0
+call Keyboard.keyPressed 0
+push constant 132
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+call Terrain.Shifting 1
+pop temp 0
+label IF_FALSE1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

@@ -10,20 +10,20 @@
 class Terrain {
     static int Nums;
     static Array arr;
+    static Ground tmp;
 
-    function void Init(int N, int len, int mxh) { // initialize N grounds, with length of len and maximal slope of mxh
+    function void Init(int N, int mnlen, int mxh) { // initialize N grounds, with minimal length of len and maximal slope of mxh
         var int i;
         var int rand;
         var int xb, yb, pdH;
-        var Ground tmp;
 
         let Nums = N;
         let arr = Array.new(Nums+5);
         
-        do Ground.Init(len, mxh);
+        do Ground.Init(mnlen, mxh);
         
         // initializing
-        let arr[0] = Ground.new(-250,254,1);// default going up for the first Ground
+        let arr[0] = Ground.new(-500,254,1);// default going up for the first Ground
         let i = 1;
         while (i < Nums) { // 1 to N-1
             let tmp = arr[i-1];
@@ -45,13 +45,16 @@ class Terrain {
 
             let i = i+1;
         }
+
+        do Screen.setColor(1);
+        do Screen.drawRectangle(0,0,10,255);
+        do Screen.drawRectangle(501,0,511,255);
         
         return;
     }
     
     function void Shifting(int dS) { // shift +dS along x axis
         var int i;
-        var Ground tmp;
         
         let i = 0;
         while(i < Nums) {
@@ -66,6 +69,10 @@ class Terrain {
             
             let i = i+1;
         }
+        
+        do Screen.setColor(1);
+        do Screen.drawRectangle(0,0,10,255);
+        do Screen.drawRectangle(501,0,511,255);
 
         return;
     }
@@ -75,7 +82,6 @@ class Terrain {
         var int cx, cy;
         var int abs;
         var int sqr;
-        var Ground tmp;
 
         let x1 = 0;
         let y1 = 0;
