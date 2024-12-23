@@ -16,7 +16,7 @@ class Terrain {
 
     function void Init(int N, int mnlen, int mxh) { // initialize N grounds, with minimal length of len and maximal slope of mxh
         let Nums = N;
-        let arr = Array.new(Nums+5);
+        let arr = Array.new(Nums+1);
         
         do Ground.Init(mnlen, mxh);
         

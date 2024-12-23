@@ -4,9 +4,7 @@ class Random{
 		return ((~a & b) | (a & ~b));
 	}
 	function int hash16(int input, int key) {
-  		var int hash;
-		let hash = input * key;
-  		return ((Random.xor( Math.divide(hash,256) , hash)) & 32767);
+  		return ((Random.xor( Math.divide(input*key,256) , input*key)) & 32767);
 	}
 	function void set_seed(int k){
 		let seed = k;

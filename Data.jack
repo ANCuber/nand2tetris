@@ -40,15 +40,15 @@ class Data {
         let AX[28] = 2;
         let AX[29] = 2;
         let AX[30] = 2;
-        let AY[0] = 0;
-        let AY[1] = 0;
-        let AY[2] = 0;
+        let AY[0] = -1;
+        let AY[1] = -1;
+        let AY[2] = -1;
         let AY[3] = -1;
         let AY[4] = -1;
-        let AY[5] = -1;
-        let AY[6] = -1;
-        let AY[7] = -1;
-        let AY[8] = -1;
+        let AY[5] = -2;
+        let AY[6] = -2;
+        let AY[7] = -2;
+        let AY[8] = -2;
         let AY[9] = -2;
         let AY[10] = -2;
         let AY[11] = -2;
@@ -62,15 +62,15 @@ class Data {
         let AY[19] = -2;
         let AY[20] = -2;
         let AY[21] = -2;
-        let AY[22] = -1;
-        let AY[23] = -1;
-        let AY[24] = -1;
-        let AY[25] = -1;
+        let AY[22] = -2;
+        let AY[23] = -2;
+        let AY[24] = -2;
+        let AY[25] = -2;
         let AY[26] = -1;
         let AY[27] = -1;
-        let AY[28] = 0;
-        let AY[29] = 0;
-        let AY[30] = 0;
+        let AY[28] = -1;
+        let AY[29] = -1;
+        let AY[30] = -1;
 
         return;
     }

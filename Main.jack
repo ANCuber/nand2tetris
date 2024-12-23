@@ -10,9 +10,9 @@ class Main {
         let craft = Instance.new(80, 30, 5, 0, 0, 1, 0, 0);
         do craft.draw(true);
         do Random.set_seed(11223);
-        do Terrain.Init(151, 10, 50);
+        do Terrain.Init(151, 15, 50);
         do Data.Init();
-        while(Terrain.checkCollision((craft.getx()), (craft.gety()), 20) = 0) {
+        while(Terrain.checkCollision((craft.getx()), (craft.gety()), 7) = 0) {
             let burn = false;
             let key = Keyboard.keyPressed();
             do craft.draw(false);
@@ -30,6 +30,14 @@ class Main {
             }
             do craft.changePos(craft.getx()+craft.getvx(), craft.gety()+craft.getvy());
             do craft.updateVelocity();
+			if(craft.getx() < 100){
+				do Terrain.Shifting(100-craft.getx());
+            	do craft.changePos(100, craft.gety());
+			}
+			if(craft.getx() > 412){
+				do Terrain.Shifting(412-craft.getx());
+            	do craft.changePos(412, craft.gety());
+			}
             if(burn) { do craft.updateRate(-dAX, -dAY); }
             do craft.draw(true);
             do Sys.wait(100);
