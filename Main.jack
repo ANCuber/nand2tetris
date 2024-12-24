@@ -25,12 +25,12 @@ class Main {
         do Random.set_seed(Math.abs(key*score));
         let score=0;
         do Screen.clearScreen();
-        do craft.draw(true);
         do craft.displayInfo(0);
         do Output.moveCursor(2, 0);
         do Output.printString("  Fuel: ");
         do Output.printInt(fuel);
-        do Terrain.Init(251,15,30);
+        do Terrain.Init(800,15,30);
+        do craft.draw(true);
         while(Terrain.checkCollision((craft.getx()), (craft.gety()), 7) = 0) {
             let burn = false;
             let key = Keyboard.keyPressed();
