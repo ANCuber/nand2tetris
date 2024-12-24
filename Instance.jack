@@ -69,21 +69,42 @@ class Instance {
         return;
     }
     // display some information about draft
-    method void displayInfo() {
-        do Output.moveCursor(0, 0);
-        do Output.printString("Horizontal: ");
-        do Output.printInt(vx);
-        // do Output.printChar(' ');
-        do Output.println();
-        do Output.printString("Vertical: ");
-        do Output.printInt(vy);
-        do Output.println();
+    method void displayInfo(boolean ctrl) {
+        if (ctrl)  {
+            do Output.moveCursor(0, 12);
+            do Output.printChar(58);
+            do Output.printInt(vx);
+            do Output.moveCursor(1, 12);
+            do Output.printInt(vy);
+        } else {
+            do Output.moveCursor(0, 0);
+            do Output.printString("  Horizontal: ");
+            do Output.printInt(vx);
+            // do Output.printChar(' ');
+            do Output.println();
+            do Output.printString("  Vertical: ");
+            do Output.printInt(vy);
+            do Output.println();
+        }
         return;
     }
     method void hideInfo() {
-        do Screen.setColor(false);
-        do Screen.drawRectangle(0, 0, 130, 100);
-        do Screen.setColor(true);
+        //do Screen.setColor(false);
+        //do Screen.drawRectangle(0, 0, 130, 100);
+        //do Screen.setColor(true);
+        do Output.moveCursor(0, 14);
+        do Output.printChar(32);
+        do Output.printChar(32);
+        
+        do Output.moveCursor(1, 12);
+        do Output.printChar(32);
+        do Output.printChar(32);
+
+        do Output.moveCursor(2, 8);
+        do Output.printChar(32);
+        do Output.printChar(32);
+        do Output.printChar(32);
+        do Output.printChar(32);
         return;
     }
     method void fire(boolean i) {

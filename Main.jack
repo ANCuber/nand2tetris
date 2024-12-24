@@ -26,6 +26,10 @@ class Main {
         let score=0;
         do Screen.clearScreen();
         do craft.draw(true);
+        do craft.displayInfo(0);
+        do Output.moveCursor(2, 0);
+        do Output.printString("  Fuel: ");
+        do Output.printInt(fuel);
         do Terrain.Init(251,15,30);
         while(Terrain.checkCollision((craft.getx()), (craft.gety()), 7) = 0) {
             let burn = false;
@@ -47,19 +51,19 @@ class Main {
             }
             do craft.changePos(craft.getx()+craft.getvx(), craft.gety()+craft.getvy());
             do craft.updateVelocity();
-			if(craft.getx() < 100){
-				do Terrain.Shifting(100-craft.getx());
-            	do craft.changePos(100, craft.gety());
+			if(craft.getx() < 110){
+				do Terrain.Shifting(110-craft.getx());
+            	do craft.changePos(110, craft.gety());
 			}
-			if(craft.getx() > 412){
-				do Terrain.Shifting(412-craft.getx());
-            	do craft.changePos(412, craft.gety());
+			if(craft.getx() > 402){
+				do Terrain.Shifting(402-craft.getx());
+            	do craft.changePos(402, craft.gety());
 			}
             if(craft.gety() < 10){
             	do craft.changePos(craft.getx(), 10);
 			}
-            do craft.displayInfo();
-            do Output.printString("Fuel: ");
+            do craft.displayInfo(1);
+            do Output.moveCursor(2, 8);
             do Output.printInt(fuel);
             if(burn) { do craft.updateRate(-dAX, -dAY); }
             do craft.draw(true);
